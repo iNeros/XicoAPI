@@ -1,5 +1,5 @@
 <?php
-
+    echo "prueba";
     include('db/conopen2.php'); 
     $sql = "SELECT * FROM `alumno` WHERE usuario = '".$_POST['usuario']."' and contraseña = '".$_POST['contraseña']."';";
     $resultado = mysqli_query($conexion,$sql) or die ( "Algo ha ido mal en la consulta a la   base de datos");
