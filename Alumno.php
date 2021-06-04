@@ -29,6 +29,13 @@ function permisos() {
         header("HTTP/1.1 200 OK");
         echo json_encode($datos);
         exit();
+        }if (isset($_GET['Perfil'])) { 
+        $sql = "SELECT 'Matricula','Nombre del alumno',alumno.nombre,alumno.appPat,alumno.appMat,'Curp',documentos.curp_niño,'Fecha de nacimiento','Grupo',grado.grupo,'Padre de familia o Tutor',tutor.nombre,tutor.appPat,tutor.appMat, 'En caso de emergencia llamar:' FROM alumno,tutor,documentos,grado WHERE (alumno.id_alumno='".$_GET['Perfil']."') and (tutor.id_alumno=alumno.id_alumno) AND (alumno.id_documentos=documentos.id_documentos) AND (alumno.id_grado=grado.id_grado);";
+        $resultado = mysqli_query($conexion,$sql) or die ( "Algo ha ido mal en la consulta a la   base de datos");
+        $datos = mysqli_fetch_all($resultado,MYSQLI_ASSOC);
+        header("HTTP/1.1 200 OK");
+        echo json_encode($datos);
+        exit();
         }else{//consultar datos de todos los alumnos
         $sql = "SELECT * FROM alumnos";
         $resultado = mysqli_query($conexion,$sql) or die ( "Algo ha ido mal en la consulta a la   base de datos");
