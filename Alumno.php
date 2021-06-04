@@ -30,7 +30,7 @@ function permisos() {
         echo json_encode($datos);
         exit();
         }if (isset($_GET['Perfil'])) { 
-        $sql = "SELECT 'Matricula','Nombre del alumno' AS 'NombreA',alumno.nombre AS N1,alumno.appPat AS N2,alumno.appMat AS N3,'Curp',documentos.curp_niño,'Fecha de nacimiento' AS 'FNAC','Grupo',grado.grupo,'Padre de familia o Tutor' AS 'PFT',tutor.nombre,tutor.appPat,tutor.appMat, 'En caso de emergencia llamar:' FROM alumno,tutor,documentos,grado WHERE (alumno.id_alumno='".$_GET['Perfil']."') and (tutor.id_alumno=alumno.id_alumno) AND (alumno.id_documentos=documentos.id_documentos) AND (alumno.id_grado=grado.id_grado);";
+        $sql = "SELECT 'Matricula','Nombre del alumno' AS 'NombreA',CONCAT(alumno.nombre,' ',alumno.appPat,' ',alumno.appMat) NameA,'Curp',documentos.curp_niño,'Fecha de nacimiento' AS 'FNAC','Grupo',grado.grupo,'Padre de familia o Tutor' AS 'PFT',concat(tutor.nombre,' ',tutor.appPat,' ',tutor.appMat) NameB, 'En caso de emergencia llamar:' AS 'ECDEL'FROM alumno,tutor,documentos,grado WHERE (alumno.id_alumno='".$_GET['Perfil']."') and (tutor.id_alumno=alumno.id_alumno) AND (alumno.id_documentos=documentos.id_documentos) AND (alumno.id_grado=grado.id_grado);";
         $resultado = mysqli_query($conexion,$sql) or die ( "Algo ha ido mal en la consulta a la   base de datos");
         $datos = mysqli_fetch_all($resultado,MYSQLI_ASSOC);
         header("HTTP/1.1 200 OK");
