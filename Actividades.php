@@ -38,7 +38,7 @@ function permisos() {
         }
 }       //inserta actividades en la tabla actividades mediante post
         if ($_SERVER['REQUEST_METHOD'] == 'POST'){
-        $sql = "INSERT INTO actividades VALUES ('".$_POST[id_actividad]."', '".$_POST[nombre]."', '".$_POST[descripcion]."', '".$_POST[id_docente]."', '".$_POST[id_grado]."', '".$_POST[estado]."')";		  
+        $sql = "INSERT INTO actividades VALUES ('".$_POST[nombre]."', '".$_POST[descripcion]."','".$_POST[fecha_inicio]."','".$_POST[fecha_fin]."','".$_POST[estado]."', '".$_POST[id_docente]."', '".$_POST[id_grupo]."')";		  
         $resultado = mysqli_query($conexion,$sql) or die ( "Algo ha ido mal en la consulta a la   base de datos en post");
         $datos = mysqli_fetch_all($resultado,MYSQLI_ASSOC);
         header("HTTP/1.1 200 OK");
@@ -46,7 +46,7 @@ function permisos() {
         exit();
   }     //update a tabla actividades usando el id_actividad
         if ($_SERVER['REQUEST_METHOD'] == 'PUT'){
-        $sql = "UPDATE actividades SET `nombre`='".$_GET[nombre]."',`descripcion`='".$_GET[descripcion]."', `estado`='".$_GET[estado]."' WHERE  `id_actividad`='".$_GET[id_actividad]."';";
+        $sql = "UPDATE actividades SET `nombre`='".$_GET[nombre]."',`descripcion`='".$_GET[descripcion]."',`fecha_inicio`='".$_GET[fecha_inicio]."',`fecha_fin`='".$_GET[fecha_fin]."', `estado`='".$_GET[estado]."',`id_grupo`='".$_GET[id_grupo]."' WHERE  `id_actividad`='".$_GET[id_actividad]."';";
         $resultado = mysqli_query($conexion,$sql) or die ( "Algo ha ido mal en la consulta a la   base de datos put");
         $datos = mysqli_fetch_all($resultado,MYSQLI_ASSOC);
         header("HTTP/1.1 200 OK");

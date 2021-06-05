@@ -38,7 +38,7 @@ function permisos() {
         }
 }       //inserta daots en la tabla tutor mediante post
         if ($_SERVER['REQUEST_METHOD'] == 'POST'){
-        $sql = "INSERT INTO tutor VALUES ('".$_POST[id_tutor]."', '".$_POST[nombre]."', '".$_POST[appPat]."', '".$_POST[appMat]."', '".$_POST[id_alumno]."')";		  
+        $sql = "INSERT INTO tutor VALUES (NULL, '".$_POST[nombre]."', '".$_POST[appPat]."', '".$_POST[appMat]."', '".$_POST[id_alumno]."')";		  
         $resultado = mysqli_query($conexion,$sql) or die ( "Algo ha ido mal en la consulta a la   base de datos en post");
         $datos = mysqli_fetch_all($resultado,MYSQLI_ASSOC);
         header("HTTP/1.1 200 OK");

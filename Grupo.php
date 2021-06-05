@@ -23,14 +23,14 @@ function permisos() {
         //consultar datos de un grado en específico
         if ($_SERVER['REQUEST_METHOD'] == 'GET'){
         if (isset($_GET['id_grado'])) { 
-        $sql = "SELECT * FROM grado WHERE  id_grado = '".$_GET['id_grado']."'";
+        $sql = "SELECT * FROM grupo WHERE  id_grupo = '".$_GET['id_grupo']."'";
         $resultado = mysqli_query($conexion,$sql) or die ( "Algo ha ido mal en la consulta a la   base de datos");
         $datos = mysqli_fetch_all($resultado,MYSQLI_ASSOC);
         header("HTTP/1.1 200 OK");
         echo json_encode($datos);
         exit();
         }else{//consultar todos los datos de todos los grados
-        $sql = "SELECT * FROM grado";
+        $sql = "SELECT * FROM grupo";
         $resultado = mysqli_query($conexion,$sql) or die ( "Algo ha ido mal en la consulta a la   base de datos");
         $datos = mysqli_fetch_all($resultado,MYSQLI_ASSOC);
         header("HTTP/1.1 200 OK");
@@ -38,7 +38,7 @@ function permisos() {
         }
 }       //inserta grados en la tabla grado mediante post
         if ($_SERVER['REQUEST_METHOD'] == 'POST'){
-        $sql = "INSERT INTO grado VALUES ('".$_POST[id_grado]."', '".$_POST[nombre]."', '".$_POST[grupo]."', '".$_POST[id_docente]."', '".$_POST[id_biblioteca]."')";		  
+        $sql = "INSERT INTO grupo VALUES (NULL, '".$_POST[nombre]."', '".$_POST[grupo]."','".$_POST[periodo]."', '".$_POST[id_docente]."')";		  
         $resultado = mysqli_query($conexion,$sql) or die ( "Algo ha ido mal en la consulta a la   base de datos en post");
         $datos = mysqli_fetch_all($resultado,MYSQLI_ASSOC);
         header("HTTP/1.1 200 OK");
@@ -46,14 +46,14 @@ function permisos() {
         exit();
   }     //update a tabla grado usando el id_grado
         if ($_SERVER['REQUEST_METHOD'] == 'PUT'){
-        $sql = "UPDATE grado SET `nombre`='".$_GET[nombre]."',`grupo`='".$_GET[grupo]."', `id_docente`='".$_GET[id_docente]."', `id_biblioteca`='".$_GET[id_biblioteca]."' WHERE  `id_grado`='".$_GET[id_grado]."';";
+        $sql = "UPDATE grupo SET `nombre`='".$_GET[nombre]."',`grupo`='".$_GET[grupo]."', `periodo`='".$_GET[periodo]."' WHERE  `id_grupo`='".$_GET[id_grupo]."';";
         $resultado = mysqli_query($conexion,$sql) or die ( "Algo ha ido mal en la consulta a la   base de datos put");
         $datos = mysqli_fetch_all($resultado,MYSQLI_ASSOC);
         header("HTTP/1.1 200 OK");
         exit();
 }       //delete grado usando el id_grado
         if ($_SERVER['REQUEST_METHOD'] == 'DELETE'){
-        $sql = "DELETE FROM grado WHERE  `id_grado`='".$_GET[id_grado]."';";
+        $sql = "DELETE FROM grupo WHERE  `id_grupo`='".$_GET[id_grupo]."';";
         $resultado = mysqli_query($conexion,$sql) or die ( "Algo ha ido mal en la consulta a la   base de datos delete");
         $datos = mysqli_fetch_all($resultado,MYSQLI_ASSOC);
         header("HTTP/1.1 200 OK");
