@@ -22,7 +22,14 @@ function permisos() {
         
         //consultar datos del alumno por id_alumno
         if ($_SERVER['REQUEST_METHOD'] == 'GET'){
-        if (isset($_GET['id_alumno'])) { 
+        if (isset($_GET['U'])) { 
+        $sql = "SELECT * FROM alumno WHERE usuario = '".$_GET['id_alumno']."' AND contraseña = '".$_GET['C'].'";
+        $resultado = mysqli_query($conexion,$sql) or die ( "Algo ha ido mal en la consulta a la   base de datos");
+        $datos = mysqli_fetch_all($resultado,MYSQLI_ASSOC);
+        header("HTTP/1.1 200 OK");
+        echo json_encode($datos);
+        exit();
+        }if (isset($_GET['id_alumno'])) { 
         $sql = "SELECT * FROM alumno WHERE  id_alumno = '".$_GET['id_alumno']."'";
         $resultado = mysqli_query($conexion,$sql) or die ( "Algo ha ido mal en la consulta a la   base de datos");
         $datos = mysqli_fetch_all($resultado,MYSQLI_ASSOC);
