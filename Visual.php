@@ -22,8 +22,8 @@ function permisos() {
         
         //consultar datos de visual por id_visual
         if ($_SERVER['REQUEST_METHOD'] == 'GET'){
-        if (isset($_GET['id_grado'])) { 
-        $sql = "SELECT * FROM visual WHERE  id_grado = '".$_GET['id_grado']."'";
+        if (isset($_GET['id_grupo'])) { 
+        $sql = "SELECT * FROM visual WHERE  id_grupo = '".$_GET['id_grupo']."'";
         $resultado = mysqli_query($conexion,$sql) or die ( "Algo ha ido mal en la consulta a la   base de datos");
         $datos = mysqli_fetch_all($resultado,MYSQLI_ASSOC);
         header("HTTP/1.1 200 OK");
