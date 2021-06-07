@@ -24,7 +24,7 @@ function permisos() {
         if ($_SERVER['REQUEST_METHOD'] == 'GET'){
         if($_GET['tiempo']=='1'){
         $fecha_actual = date("Y-m-d",strtotime($fecha_actual."- 4 hour"));
-        $sql = "SELECT * FROM avisos WHERE fecha BETWEEN '".$fecha_actual."' and DATE_ADD(sysdate(), INTERVAL -5 HOUR) AND id_grado = '".$_GET['id_grado']."'ORDER BY id_avisos desc";
+        $sql = "SELECT * FROM avisos WHERE fecha BETWEEN '".$fecha_actual."' and DATE_ADD(sysdate(), INTERVAL -5 HOUR) AND id_grupo = '".$_GET['id_grupo']."'ORDER BY id_avisos desc";
         $resultado = mysqli_query($conexion,$sql) or die ( "Algo ha ido mal en la consulta a la   base de datos");
         $datos = mysqli_fetch_all($resultado,MYSQLI_ASSOC);
         header("HTTP/1.1 200 OK");
@@ -35,7 +35,7 @@ function permisos() {
         $fecha_actual = date("Y-m-d",strtotime($fecha_actual."- 4 hour"));
         $fecha_actual1 = date("Y-m-d"); 
         $fecha_actual1 = date("Y-m-d",strtotime($fecha_actual1."- 4 hour"));
-        $sql = "SELECT * FROM avisos WHERE fecha BETWEEN '".$fecha_actual."' and '".$fecha_actual1."' AND id_grado = '".$_GET['id_grado']."'ORDER BY id_avisos desc";
+        $sql = "SELECT * FROM avisos WHERE fecha BETWEEN '".$fecha_actual."' and '".$fecha_actual1."' AND id_grupo = '".$_GET['id_grupo']."'ORDER BY id_avisos desc";
         $resultado = mysqli_query($conexion,$sql) or die ( "Algo ha ido mal en la consulta a la   base de datos");
         $datos = mysqli_fetch_all($resultado,MYSQLI_ASSOC);
         header("HTTP/1.1 200 OK");
@@ -44,7 +44,7 @@ function permisos() {
         }if($_GET['tiempo']=='3'){
         $fecha_actual = date("Y-m-d",strtotime($fecha_actual."- 7 days"));
         $fecha_actual = date("Y-m-d",strtotime($fecha_actual."- 4 hour"));  
-        $sql = "SELECT * FROM avisos WHERE fecha < '".$fecha_actual."' AND id_grado = '".$_GET['id_grado']."'ORDER BY id_avisos desc";
+        $sql = "SELECT * FROM avisos WHERE fecha < '".$fecha_actual."' AND id_grupo = '".$_GET['id_grupo']."'ORDER BY id_avisos desc";
         $resultado = mysqli_query($conexion,$sql) or die ( "Algo ha ido mal en la consulta a la   base de datos");
         $datos = mysqli_fetch_all($resultado,MYSQLI_ASSOC);
         header("HTTP/1.1 200 OK");
@@ -59,7 +59,7 @@ function permisos() {
         }
 }       //inserta avisos en la tabla avisos mediante post
         if ($_SERVER['REQUEST_METHOD'] == 'POST'){
-        $sql = "INSERT INTO avisos VALUES ('".$_POST[id_avisos]."', '".$_POST[nombre]."', '".$_POST[descripcion]."', '".$_POST[ruta_archivo]."', '".$_POST[fecha]."', '".$_POST[urls]."', '".$_POST[id_grado]."')";		  
+        $sql = "INSERT INTO avisos VALUES (NULL, '".$_POST[nombre]."', '".$_POST[descripcion]."', '".$_POST[ruta_archivo]."', '".$_POST[fecha]."', '".$_POST[urls]."', '".$_POST[id_grupo]."')";		  
         $resultado = mysqli_query($conexion,$sql) or die ( "Algo ha ido mal en la consulta a la   base de datos en post");
         $datos = mysqli_fetch_all($resultado,MYSQLI_ASSOC);
         header("HTTP/1.1 200 OK");
@@ -67,7 +67,7 @@ function permisos() {
         exit();
   }     //update a tabla avisos usando el id_avisos
         if ($_SERVER['REQUEST_METHOD'] == 'PUT'){
-        $sql = "UPDATE avisos SET `nombre`='".$_GET[nombre]."',`descripcion`='".$_GET[descripcion]."', `ruta_archivo`='".$_GET[ruta_archivo]."', `urls`='".$_GET[urls]."', `id_grado`='".$_GET[id_grado]."', WHERE  `id_avisos`='".$_GET[id_avisos]."';";
+        $sql = "UPDATE avisos SET `nombre`='".$_GET[nombre]."',`descripcion`='".$_GET[descripcion]."', `ruta_archivo`='".$_GET[ruta_archivo]."', `urls`='".$_GET[urls]."', `id_grupo`='".$_GET[id_grupo]."', WHERE  `id_avisos`='".$_GET[id_avisos]."';";
         $resultado = mysqli_query($conexion,$sql) or die ( "Algo ha ido mal en la consulta a la   base de datos put");
         $datos = mysqli_fetch_all($resultado,MYSQLI_ASSOC);
         header("HTTP/1.1 200 OK");

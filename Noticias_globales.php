@@ -29,6 +29,15 @@ function permisos() {
         header("HTTP/1.1 200 OK");
         echo json_encode($datos);
         exit();
+        }if (isset($_GET['R'])) { 
+        $sql = "SELECT * FROM noticias_globales WHERE id_noticias = (SELECT MAX(id_noticias) FROM noticias_globales)
+        UNION
+        SELECT * FROM noticias_globales WHERE id_noticias = (SELECT MAX(id_noticias)-1 FROM noticias_globales);";
+        $resultado = mysqli_query($conexion,$sql) or die ( "Algo ha ido mal en la consulta a la   base de datos");
+        $datos = mysqli_fetch_all($resultado,MYSQLI_ASSOC);
+        header("HTTP/1.1 200 OK");
+        echo json_encode($datos);
+        exit();
         }else{//consultar todas las noticias globales
         $sql = "SELECT * FROM noticias_globales";
         $resultado = mysqli_query($conexion,$sql) or die ( "Algo ha ido mal en la consulta a la   base de datos");
@@ -38,7 +47,7 @@ function permisos() {
         }
 }       //inserta noticias globales en la tabla noticias_globales mediante post
         if ($_SERVER['REQUEST_METHOD'] == 'POST'){
-        $sql = "INSERT INTO noticias_globales VALUES ('".$_POST[id_noticias]."', '".$_POST[nombre]."', '".$_POST[descripcion]."', '".$_POST[estado]."', '".$_POST[ruta_archivo]."')";		  
+        $sql = "INSERT INTO noticias_globales VALUES (NULL, '".$_POST[nombre]."', '".$_POST[descripcion]."', '".$_POST[estado]."', '".$_POST[ruta_archivo]."')";		  
         $resultado = mysqli_query($conexion,$sql) or die ( "Algo ha ido mal en la consulta a la   base de datos en post");
         $datos = mysqli_fetch_all($resultado,MYSQLI_ASSOC);
         header("HTTP/1.1 200 OK");

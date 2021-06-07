@@ -38,7 +38,7 @@ function permisos() {
         }
 }       //inserta datos en la tabla impreso mediante post
         if ($_SERVER['REQUEST_METHOD'] == 'POST'){
-        $sql = "INSERT INTO impreso VALUES ('".$_POST[id_impreso]."', '".$_POST[titulo]."', '".$_POST[ruta]."')";		  
+        $sql = "INSERT INTO impreso VALUES (NULL, '".$_POST[titulo]."', '".$_POST[ruta]."', '".$_POST[id_grupo]."')";		  
         $resultado = mysqli_query($conexion,$sql) or die ( "Algo ha ido mal en la consulta a la   base de datos en post");
         $datos = mysqli_fetch_all($resultado,MYSQLI_ASSOC);
         header("HTTP/1.1 200 OK");
@@ -46,7 +46,7 @@ function permisos() {
         exit();
   }     //update a tabla impreso usando el id_impreso
         if ($_SERVER['REQUEST_METHOD'] == 'PUT'){
-        $sql = "UPDATE impreso SET `titulo`='".$_GET[titulo]."',`ruta`='".$_GET[ruta]."' WHERE  `id_impreso`='".$_GET[id_impreso]."';";
+        $sql = "UPDATE impreso SET `titulo`='".$_GET[titulo]."',`ruta`='".$_GET[ruta]."',`id_grupo`='".$_GET[id_grupo]."' WHERE  `id_impreso`='".$_GET[id_impreso]."';";
         $resultado = mysqli_query($conexion,$sql) or die ( "Algo ha ido mal en la consulta a la   base de datos put");
         $datos = mysqli_fetch_all($resultado,MYSQLI_ASSOC);
         header("HTTP/1.1 200 OK");

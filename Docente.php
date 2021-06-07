@@ -38,7 +38,7 @@ function permisos() {
         }
 }       //inserta nuevo docente en tabla docente mediante post
         if ($_SERVER['REQUEST_METHOD'] == 'POST'){
-        $sql = "INSERT INTO docente VALUES ('".$_POST[id_docente]."', '".$_POST[nombre]."', '".$_POST[appPat]."', '".$_POST[appMat]."', '".$_POST[usuario]."', '".$_POST[contraseña]."')";		  
+        $sql = "INSERT INTO docente VALUES (NULL, '".$_POST[nombre]."', '".$_POST[appPat]."', '".$_POST[appMat]."', '".$_POST[usuario]."', '".$_POST[contraseña]."')";		  
         $resultado = mysqli_query($conexion,$sql) or die ( "Algo ha ido mal en la consulta a la   base de datos en post");
         $datos = mysqli_fetch_all($resultado,MYSQLI_ASSOC);
         header("HTTP/1.1 200 OK");

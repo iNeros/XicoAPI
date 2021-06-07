@@ -22,7 +22,14 @@ function permisos() {
         
         //consultar datos del alumno por id_alumno
         if ($_SERVER['REQUEST_METHOD'] == 'GET'){
-        if (isset($_GET['id_alumno'])) { 
+        if (isset($_GET['User'])) { 
+        $sql = "SELECT * FROM alumno WHERE usuario = '".$_GET['User']."' AND contraseña = '".$_GET['Pass']."'";
+        $resultado = mysqli_query($conexion,$sql) or die ( "Algo ha ido mal en la consulta a la   base de datos");
+        $datos = mysqli_fetch_all($resultado,MYSQLI_ASSOC);
+        header("HTTP/1.1 200 OK");
+        echo json_encode($datos);
+        exit();
+        }if (isset($_GET['id_alumno'])) { 
         $sql = "SELECT * FROM alumno WHERE  id_alumno = '".$_GET['id_alumno']."'";
         $resultado = mysqli_query($conexion,$sql) or die ( "Algo ha ido mal en la consulta a la   base de datos");
         $datos = mysqli_fetch_all($resultado,MYSQLI_ASSOC);
@@ -30,7 +37,7 @@ function permisos() {
         echo json_encode($datos);
         exit();
         }if (isset($_GET['Perfil'])) { 
-        $sql = "SELECT 'Matricula','Nombre del alumno' AS 'NombreA',CONCAT(alumno.nombre,' ',alumno.appPat,' ',alumno.appMat) NameA,'Curp',documentos.curp_niño,'Fecha de nacimiento' AS 'FNAC','Grupo',grado.grupo,'Padre de familia o Tutor' AS 'PFT',concat(tutor.nombre,' ',tutor.appPat,' ',tutor.appMat) NameB, 'En caso de emergencia llamar:' AS 'ECDEL'FROM alumno,tutor,documentos,grado WHERE (alumno.id_alumno='".$_GET['Perfil']."') and (tutor.id_alumno=alumno.id_alumno) AND (alumno.id_documentos=documentos.id_documentos) AND (alumno.id_grado=grado.id_grado);";
+        $sql = "SELECT CONCAT(alumno.nombre,' ',alumno.appPat,' ',alumno.appMat) NameA,documentos.curp_niño, alumno.fechaNac, grupo.grupo,concat(tutor.nombre,' ',tutor.appPat,' ',tutor.appMat) NameP FROM alumno,tutor,documentos,grupo WHERE (alumno.id_alumno='".$_GET['Perfil']."') and (tutor.id_alumno=alumno.id_alumno) AND (alumno.id_alumno=documentos.id_alumno) AND (alumno.id_grado=grupo.id_grupo);";
         $resultado = mysqli_query($conexion,$sql) or die ( "Algo ha ido mal en la consulta a la   base de datos");
         $datos = mysqli_fetch_all($resultado,MYSQLI_ASSOC);
         header("HTTP/1.1 200 OK");
@@ -45,7 +52,7 @@ function permisos() {
         }
 }       //inserta datos de alumno en la tabla alumno mediante post
         if ($_SERVER['REQUEST_METHOD'] == 'POST'){
-        $sql = "INSERT INTO alumno VALUES ('".$_POST[id_alumno]."', '".$_POST[nombre]."', '".$_POST[appPat]."', '".$_POST[appMat]."', '".$_POST[usuario]."', '".$_POST[contraseña]."', '".$_POST[id_grado]."', '".$_POST[id_tutor]."', '".$_POST[id_documentos]."')";		  
+        $sql = "INSERT INTO alumno VALUES (NULL,'".$_POST[nombre]."', '".$_POST[appPat]."', '".$_POST[appMat]."','".$_POST[fechaNac]."', '".$_POST[usuario]."', '".$_POST[contraseña]."','".$_POST[id_grado]."');";		  
         $resultado = mysqli_query($conexion,$sql) or die ( "Algo ha ido mal en la consulta a la   base de datos en post");
         $datos = mysqli_fetch_all($resultado,MYSQLI_ASSOC);
         header("HTTP/1.1 200 OK");
@@ -53,7 +60,7 @@ function permisos() {
         exit();
   }     //update a tabla alumno usando el id_alumno
         if ($_SERVER['REQUEST_METHOD'] == 'PUT'){
-        $sql = "UPDATE alumno SET `nombre`='".$_GET[nombre]."',`appPat`='".$_GET[appPat]."', `appMat`='".$_GET[appMat]."', `usuario`='".$_GET[usuario]."', `contraseña`='".$_GET[contraseña]."', `id_grado`='".$_GET[id_grado]."', `id_tutor`='".$_GET[id_tutor]."', `id_documentos`='".$_GET[id_documentos]."' WHERE  `id_alumno`='".$_GET[id_alumno]."';";
+        $sql = "UPDATE alumno SET `nombre`='".$_GET[nombre]."',`appPat`='".$_GET[appPat]."', `appMat`='".$_GET[appMat]."',`fechaNac`='".$_GET[fechaNac]."', `usuario`='".$_GET[usuario]."', `contraseña`='".$_GET[contraseña]."', `id_grado`='".$_GET[id_grado]."' WHERE  `id_alumno`='".$_GET[id_alumno]."';";
         $resultado = mysqli_query($conexion,$sql) or die ( "Algo ha ido mal en la consulta a la   base de datos put");
         $datos = mysqli_fetch_all($resultado,MYSQLI_ASSOC);
         header("HTTP/1.1 200 OK");
