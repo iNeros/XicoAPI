@@ -59,5 +59,4 @@ function permisos() {
         header("HTTP/1.1 200 OK");
         exit();
 }
-header("HTTP/1.1 400 Peticion HTTP inexistente");
 ?>
