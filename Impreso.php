@@ -22,8 +22,8 @@ function permisos() {
         
         //consultar datos de impreso usando id_impreso
         if ($_SERVER['REQUEST_METHOD'] == 'GET'){
-        if (isset($_GET['id_impreso'])) { 
-        $sql = "SELECT * FROM impreso WHERE  id_impreso = '".$_GET['id_impreso']."'";
+        if (isset($_GET['periodoAsociado'])) { 
+        $sql = "SELECT * FROM impreso WHERE  periodoAsociado = '".$_GET['periodoAsociado']."'";
         $resultado = mysqli_query($conexion,$sql) or die ( "Algo ha ido mal en la consulta a la   base de datos");
         $datos = mysqli_fetch_all($resultado,MYSQLI_ASSOC);
         header("HTTP/1.1 200 OK");
