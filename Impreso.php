@@ -20,6 +20,7 @@ function permisos() {
 
         include('db/conopen2.php'); 
         
+        //consultar datos de impreso usando id_impreso
         if ($_SERVER['REQUEST_METHOD'] == 'GET'){
         if (isset($_GET['id_impreso'])) { 
         $sql = "SELECT * FROM impreso WHERE  id_impreso = '".$_GET['id_impreso']."'";
@@ -27,17 +28,17 @@ function permisos() {
         $datos = mysqli_fetch_all($resultado,MYSQLI_ASSOC);
         header("HTTP/1.1 200 OK");
         echo json_encode($datos);
-        exit();        
-        }else{
+        exit();
+        }else{//consultar todos los datos de la tabla impreso
         $sql = "SELECT * FROM impreso";
         $resultado = mysqli_query($conexion,$sql) or die ( "Algo ha ido mal en la consulta a la   base de datos");
         $datos = mysqli_fetch_all($resultado,MYSQLI_ASSOC);
         header("HTTP/1.1 200 OK");
         echo json_encode($datos);
-        }       
-        //inserta datos en la tabla impreso mediante post
+        }
+}       //inserta datos en la tabla impreso mediante post
         if ($_SERVER['REQUEST_METHOD'] == 'POST'){
-        $sql = "INSERT INTO impreso VALUES (NULL, '".$_POST[titulo]."', '".$_POST[ruta]."', '".$_POST[tipo]."','".$_POST[periodoAsociado]."')";		  
+        $sql = "INSERT INTO impreso VALUES (NULL, '".$_POST[titulo]."', '".$_POST[ruta]."', '".$_POST[id_grupo]."')";		  
         $resultado = mysqli_query($conexion,$sql) or die ( "Algo ha ido mal en la consulta a la   base de datos en post");
         $datos = mysqli_fetch_all($resultado,MYSQLI_ASSOC);
         header("HTTP/1.1 200 OK");
@@ -45,7 +46,7 @@ function permisos() {
         exit();
   }     //update a tabla impreso usando el id_impreso
         if ($_SERVER['REQUEST_METHOD'] == 'PUT'){
-        $sql = "UPDATE impreso SET `titulo`='".$_GET[titulo]."',`ruta`='".$_GET[ruta]."',`tipo`='".$_GET[tipo]."',`periodoAsociado`='".$_GET[periodoAsociado]."' WHERE  `id_impreso`='".$_GET[id_impreso]."';";
+        $sql = "UPDATE impreso SET `titulo`='".$_GET[titulo]."',`ruta`='".$_GET[ruta]."',`id_grupo`='".$_GET[id_grupo]."' WHERE  `id_impreso`='".$_GET[id_impreso]."';";
         $resultado = mysqli_query($conexion,$sql) or die ( "Algo ha ido mal en la consulta a la   base de datos put");
         $datos = mysqli_fetch_all($resultado,MYSQLI_ASSOC);
         header("HTTP/1.1 200 OK");
