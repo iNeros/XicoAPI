@@ -39,14 +39,14 @@ function permisos() {
         echo json_encode($datos);
         exit();
       }  //Para los de tercero, les devuelve de todos los grados
-        if($_GET['periodoAsociado']=='3'){
+       /* if($_GET['periodoAsociado']=='3'){
         $sql = "SELECT * FROM impreso";
         $resultado = mysqli_query($conexion,$sql) or die ( "Algo ha ido mal en la consulta a la   base de datos");
         $datos = mysqli_fetch_all($resultado,MYSQLI_ASSOC);
         header("HTTP/1.1 200 OK");
         echo json_encode($datos);
         exit();
-      }
+      }*/
       }else{ echo "Funciona la API"; exit();}      
          //inserta datos en la tabla impreso mediante post
         if ($_SERVER['REQUEST_METHOD'] == 'POST'){
