@@ -22,33 +22,20 @@ function permisos() {
         
         if ($_SERVER['REQUEST_METHOD'] == 'GET'){
         if (isset($_GET['periodoAsociado'])) { 
-        //Para los de primero
-        if($_GET['periodoAsociado']==1){
-        $sql = "SELECT * FROM impreso WHERE  periodoAsociado = '".$_GET[periodoAsociado]."'";
+        $sql = "SELECT * FROM impreso WHERE  periodoAsociado = '".$_GET['periodoAsociado']."'";
         $resultado = mysqli_query($conexion,$sql) or die ( "Algo ha ido mal en la consulta a la   base de datos");
         $datos = mysqli_fetch_all($resultado,MYSQLI_ASSOC);
         header("HTTP/1.1 200 OK");
         echo json_encode($datos);
-        exit();
-        }
-        //Para los de segundo
-        if($_GET['periodoAsociado']==2){
-        $sql = "SELECT * FROM impreso WHERE  periodoAsociado = 1 UNION SELECT * FROM impreso WHERE  periodoAsociado = '".$_GET[periodoAsociado]."'";
-        $resultado = mysqli_query($conexion,$sql) or die ( "Algo ha ido mal en la consulta a la   base de datos");
-        $datos = mysqli_fetch_all($resultado,MYSQLI_ASSOC);
-        header("HTTP/1.1 200 OK");
-        echo json_encode($datos);
-        exit();
-        }        
-        if($_GET['periodoAsociado']==3){//Para los de tercero, les devuelve de todos los grados
+        exit();        
+        }else{
         $sql = "SELECT * FROM impreso";
         $resultado = mysqli_query($conexion,$sql) or die ( "Algo ha ido mal en la consulta a la   base de datos");
         $datos = mysqli_fetch_all($resultado,MYSQLI_ASSOC);
         header("HTTP/1.1 200 OK");
         echo json_encode($datos);
-        exit();
-        }
-        }else{echo "Si funciona la API"; exit();}       
+        exit(); 
+        }       
         //inserta datos en la tabla impreso mediante post
         if ($_SERVER['REQUEST_METHOD'] == 'POST'){
         $sql = "INSERT INTO impreso VALUES (NULL, '".$_POST[titulo]."', '".$_POST[ruta]."', '".$_POST[tipo]."','".$_POST[periodoAsociado]."')";		  
