@@ -38,14 +38,13 @@ function permisos() {
         header("HTTP/1.1 200 OK");
         echo json_encode($datos);
         exit();}        
-        }else{//Para los de tercero, les devuelve de todos los grados
+        if($_GET['periodoAsociado']==3){//Para los de tercero, les devuelve de todos los grados
         $sql = "SELECT * FROM impreso";
         $resultado = mysqli_query($conexion,$sql) or die ( "Algo ha ido mal en la consulta a la   base de datos");
         $datos = mysqli_fetch_all($resultado,MYSQLI_ASSOC);
         header("HTTP/1.1 200 OK");
         echo json_encode($datos);
-        exit();
-        }
+        exit();}
 }       //inserta datos en la tabla impreso mediante post
         if ($_SERVER['REQUEST_METHOD'] == 'POST'){
         $sql = "INSERT INTO impreso VALUES (NULL, '".$_POST[titulo]."', '".$_POST[ruta]."', '".$_POST[id_grupo]."')";		  
