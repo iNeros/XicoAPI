@@ -34,7 +34,6 @@ function permisos() {
         $datos = mysqli_fetch_all($resultado,MYSQLI_ASSOC);
         header("HTTP/1.1 200 OK");
         echo json_encode($datos);
-        exit(); 
         }       
         //inserta datos en la tabla impreso mediante post
         if ($_SERVER['REQUEST_METHOD'] == 'POST'){
