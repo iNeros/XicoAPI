@@ -24,7 +24,7 @@ function permisos() {
         if ($_SERVER['REQUEST_METHOD'] == 'GET'){
         if (isset($_GET['periodoAsociado'])) {
           if ($_GET['periodoAsociado'] == '1'){   
-            $sql = "SELECT * FROM impreso WHERE  periodoAsociado = '".$_GET['periodoAsociado']."'";
+            $sql = "SELECT * FROM impreso WHERE  periodoAsociado = '".$_GET['periodoAsociado']."' ORDER BY titulo";
             $resultado = mysqli_query($conexion,$sql) or die ( "Algo ha ido mal en la consulta a la   base de datos");
             $datos = mysqli_fetch_all($resultado,MYSQLI_ASSOC);
             header("HTTP/1.1 200 OK");
@@ -32,7 +32,15 @@ function permisos() {
             exit();
           }
           if ($_GET['periodoAsociado'] == '2'){   
-            $sql = "SELECT * FROM impreso WHERE  periodoAsociado = 1 UNION SELECT * FROM impreso WHERE periodoAsociado = '".$_GET['periodoAsociado']."'";
+            $sql = "SELECT * FROM impreso WHERE  periodoAsociado = 1 UNION SELECT * FROM impreso WHERE periodoAsociado = '".$_GET['periodoAsociado']."' ORDER BY titulo";
+            $resultado = mysqli_query($conexion,$sql) or die ( "Algo ha ido mal en la consulta a la   base de datos");
+            $datos = mysqli_fetch_all($resultado,MYSQLI_ASSOC);
+            header("HTTP/1.1 200 OK");
+            echo json_encode($datos);
+            exit();
+          }
+          if ($_GET['periodoAsociado'] == '3'){   
+            $sql = "SELECT * FROM impreso ORDER BY titulo";
             $resultado = mysqli_query($conexion,$sql) or die ( "Algo ha ido mal en la consulta a la   base de datos");
             $datos = mysqli_fetch_all($resultado,MYSQLI_ASSOC);
             header("HTTP/1.1 200 OK");
