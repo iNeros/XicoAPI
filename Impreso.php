@@ -23,22 +23,22 @@ function permisos() {
         if ($_SERVER['REQUEST_METHOD'] == 'GET'){
         if (isset($_GET['periodoAsociado'])) { 
         //Para los de primero
-        if($_GET['periodoAsociado']==1){
+       // if($_GET['periodoAsociado']==1){
         $sql = "SELECT * FROM impreso WHERE  periodoAsociado = '".$_GET[periodoAsociado]."'";
         $resultado = mysqli_query($conexion,$sql) or die ( "Algo ha ido mal en la consulta a la   base de datos");
         $datos = mysqli_fetch_all($resultado,MYSQLI_ASSOC);
         header("HTTP/1.1 200 OK");
         echo json_encode($datos);
-        exit();}
+        exit();
         //Para los de segundo
-        if($_GET['periodoAsociado']==2){
+       /* if($_GET['periodoAsociado']==2){
         $sql = "SELECT * FROM impreso WHERE  periodoAsociado = 1 UNION SELECT * FROM impreso WHERE  periodoAsociado = '".$_GET[periodoAsociado]."'";
         $resultado = mysqli_query($conexion,$sql) or die ( "Algo ha ido mal en la consulta a la   base de datos");
         $datos = mysqli_fetch_all($resultado,MYSQLI_ASSOC);
         header("HTTP/1.1 200 OK");
         echo json_encode($datos);
         exit();}        
-       /* if($_GET['periodoAsociado']==3){//Para los de tercero, les devuelve de todos los grados
+        if($_GET['periodoAsociado']==3){//Para los de tercero, les devuelve de todos los grados
         $sql = "SELECT * FROM impreso";
         $resultado = mysqli_query($conexion,$sql) or die ( "Algo ha ido mal en la consulta a la   base de datos");
         $datos = mysqli_fetch_all($resultado,MYSQLI_ASSOC);
