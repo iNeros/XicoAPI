@@ -23,16 +23,16 @@ function permisos() {
         //consultar datos de impreso usando id_impreso
         if ($_SERVER['REQUEST_METHOD'] == 'GET'){
         if (isset($_GET['periodoAsociado'])) {
-          $culo = "eshem";
-          $culo2 = "No eshem";
-          if ($_GET['periodoAsociado'] == 1){echo json_encode ($culo);}
-          if ($_GET['periodoAsociado'] == '1'){echo json_encode ($culo2);}
+          if ($_GET['periodoAsociado'] == '1'){
+            
         $sql = "SELECT * FROM impreso WHERE  periodoAsociado = '".$_GET['periodoAsociado']."'";
         $resultado = mysqli_query($conexion,$sql) or die ( "Algo ha ido mal en la consulta a la   base de datos");
         $datos = mysqli_fetch_all($resultado,MYSQLI_ASSOC);
         header("HTTP/1.1 200 OK");
         echo json_encode($datos);
         exit();
+      }
+
         }else{//consultar todos los datos de la tabla impreso
         $sql = "SELECT * FROM impreso";
         $resultado = mysqli_query($conexion,$sql) or die ( "Algo ha ido mal en la consulta a la   base de datos");
