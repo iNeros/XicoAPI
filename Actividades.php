@@ -29,6 +29,13 @@ function permisos() {
         header("HTTP/1.1 200 OK");
         echo json_encode($datos);
         exit();
+        }if (isset($_GET['id_docente'])) { 
+        $sql = "SELECT * FROM actividades WHERE  id_docente = '".$_GET['id_docente']."' ORDER BY id_actividad desc";
+        $resultado = mysqli_query($conexion,$sql) or die ( "Algo ha ido mal en la consulta a la   base de datos");
+        $datos = mysqli_fetch_all($resultado,MYSQLI_ASSOC);
+        header("HTTP/1.1 200 OK");
+        echo json_encode($datos);
+        exit();
         }if (isset($_GET['max'])) { 
         $sql = "SELECT MAX(id_actividad) AS nuevo_id FROM `actividades`";
         $resultado = mysqli_query($conexion,$sql) or die ( "Algo ha ido mal en la consulta a la   base de datos max");
