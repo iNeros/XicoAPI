@@ -30,7 +30,7 @@ function permisos() {
         echo json_encode($datos);
         exit();
         }if (isset($_GET['max'])) { 
-        $sql = "SELECT MAX(id_actividad)+1 FROM `actividades`";
+        $sql = "SELECT MAX(id_actividad)+1 AS nuevo_id FROM `actividades`";
         $resultado = mysqli_query($conexion,$sql) or die ( "Algo ha ido mal en la consulta a la   base de datos max");
         $datos = mysqli_fetch_all($resultado,MYSQLI_ASSOC);
         header("HTTP/1.1 200 OK");
