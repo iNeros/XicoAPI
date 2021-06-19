@@ -38,7 +38,7 @@ function permisos() {
         }
 }       //inserta actividades en la tabla actividades mediante post
         if ($_SERVER['REQUEST_METHOD'] == 'POST'){
-        $sql = "INSERT INTO actividades VALUES ('".$_POST[nombre]."', '".$_POST[descripcion]."','".$_POST[fecha_inicio]."','".$_POST[fecha_fin]."','".$_POST[estado]."', '".$_POST[id_docente]."', '".$_POST[id_grupo]."')";		  
+        $sql = "INSERT INTO actividades VALUES (NULL,'".$_POST[nombre]."', '".$_POST[descripcion]."','".$_POST[fecha_inicio]."','".$_POST[fecha_fin]."','".$_POST[estado]."', '".$_POST[id_docente]."', '".$_POST[id_grupo]."')";		  
         $resultado = mysqli_query($conexion,$sql) or die ( "Algo ha ido mal en la consulta a la   base de datos en post");
         $datos = mysqli_fetch_all($resultado,MYSQLI_ASSOC);
         header("HTTP/1.1 200 OK");
