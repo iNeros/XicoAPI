@@ -50,8 +50,8 @@ function permisos() {
         header("HTTP/1.1 200 OK");
         echo json_encode($datos);
         exit();
-        }if (isset($_GET['preview'])) { 
-        $sql = " SELECT * FROM `actividades` WHERE id_docente = '".$_GET['id_docente']."' ORDER BY id_actividad DESC LIMIT 3";
+        }if (isset($_GET['id_docenteP'])) { 
+        $sql = " SELECT * FROM `actividades` WHERE id_docente = '".$_GET['id_docenteP']."' ORDER BY id_actividad DESC LIMIT 3";
         $resultado = mysqli_query($conexion,$sql) or die ( "Algo ha ido mal en la consulta a la   base de datos preview");
         $datos = mysqli_fetch_all($resultado,MYSQLI_ASSOC);
         header("HTTP/1.1 200 OK");
