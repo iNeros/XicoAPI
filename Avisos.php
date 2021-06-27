@@ -57,7 +57,14 @@ function permisos() {
         header("HTTP/1.1 200 OK");
         echo json_encode($datos); 
         exit();   
-        }else{//consultar avisos de todos los maestros
+        }if(isset($_GET['id_avisos'])){ 
+        $sql = "SELECT * from avisos where id_avisos = '".$_GET['id_avisos']."'";
+        $resultado = mysqli_query($conexion,$sql) or die ( "Algo ha ido mal en la consulta a la   base de datos");
+        $datos = mysqli_fetch_all($resultado,MYSQLI_ASSOC);
+        header("HTTP/1.1 200 OK");
+        echo json_encode($datos); 
+        exit();}
+        else{//consultar avisos de todos los maestros
         $sql = "SELECT * FROM avisos ORDER BY id_avisos desc";
         $resultado = mysqli_query($conexion,$sql) or die ( "Algo ha ido mal en la consulta a la   base de datos");
         $datos = mysqli_fetch_all($resultado,MYSQLI_ASSOC);
