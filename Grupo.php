@@ -29,6 +29,13 @@ function permisos() {
         header("HTTP/1.1 200 OK");
         echo json_encode($datos);
         exit();
+        }if (isset($_GET['MaxGrupo'])) { 
+        $sql = "SELECT MAX(id_grupo) AS id_grupo FROM `grupo`";
+        $resultado = mysqli_query($conexion,$sql) or die ( "Algo ha ido mal en la consulta a la   base de datos");
+        $datos = mysqli_fetch_all($resultado,MYSQLI_ASSOC);
+        header("HTTP/1.1 200 OK");
+        echo json_encode($datos);
+        exit();
         }else{//consultar todos los datos de todos los grados
         $sql = "SELECT * FROM grupo";
         $resultado = mysqli_query($conexion,$sql) or die ( "Algo ha ido mal en la consulta a la   base de datos");
