@@ -52,9 +52,9 @@ function permisos() {
         }
 }       //inserta datos de alumno en la tabla alumno mediante post
         if ($_SERVER['REQUEST_METHOD'] == 'POST'){
-        //$usuario = $_POST[usuario];
-        //$contraseña = rand(1000,9999);
-        $sql = "INSERT INTO alumno VALUES (NULL,'".$_POST[nombre]."', '".$_POST[appPat]."', '".$_POST[appMat]."','".$_POST[fechaNac]."', '".$_POST[usuario]."', '".$_POST[contraseña]."','".$_POST[id_grado]."');";		  
+        $usuario = $_POST[usuario].rand(10,99);
+        $contraseña = rand(1000,9999);
+        $sql = "INSERT INTO alumno VALUES (NULL,'".$_POST[nombre]."', '".$_POST[appPat]."', '".$_POST[appMat]."','".$_POST[fechaNac]."', '".$usuario."', '".$contraseña."','".$_POST[id_grado]."');";		  
         $resultado = mysqli_query($conexion,$sql) or die ( "Algo ha ido mal en la consulta a la   base de datos en post");
         $datos = mysqli_fetch_all($resultado,MYSQLI_ASSOC);
         header("HTTP/1.1 200 OK");
