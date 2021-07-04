@@ -37,7 +37,7 @@ function permisos() {
         echo json_encode($datos);
         exit();
         }if (isset($_GET['Alumnos'])) { 
-        $sql = "SELECT alumno.id_alumno, alumno.nombre,alumno.appPat,alumno.appMat,alumno.fechaNac,alumno.usuario,alumno.contraseña from alumno,grupo where id_docente = '".$_GET['id_docente']."' AND id_grupo = '".$_GET['id_grupo']."' and id_grado = id_grupo";
+        $sql = "SELECT alumno.id_alumno, alumno.nombre,alumno.appPat,alumno.appMat,alumno.fechaNac,alumno.usuario,alumno.contraseña from alumno,grupo where id_docente = '".$_GET['id_docente']."' AND id_grupo = '".$_GET['Alumnos']."' and id_grado = id_grupo";
         $resultado = mysqli_query($conexion,$sql) or die ( "Algo ha ido mal en la consulta a la   base de datos");
         $datos = mysqli_fetch_all($resultado,MYSQLI_ASSOC);
         header("HTTP/1.1 200 OK");
