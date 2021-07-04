@@ -29,6 +29,14 @@ function permisos() {
         header("HTTP/1.1 200 OK");
         echo json_encode($datos);
         exit();
+        }if (isset($_GET['nombre'])) { 
+        $token = $_GET['ruta']."&token=".$_GET['token'];
+        $sql = "INSERT INTO archivos_docentes VALUES (NULL, '".$_GET['nombre']."', '".$token."', '".$_GET['tipo']."', '".$_GET['id_actividades1']."')";		  
+        $resultado = mysqli_query($conexion,$sql) or die ( "Algo ha ido mal en la consulta a la base de datos");
+        $datos = mysqli_fetch_all($resultado,MYSQLI_ASSOC);
+        header("HTTP/1.1 200 OK");
+        echo json_encode($datos);
+        exit();
         }else{//consultar archivos de todos los maestros
         $sql = "SELECT * FROM archivos_docentes ORDER BY id_archivo desc";
         $resultado = mysqli_query($conexion,$sql) or die ( "Algo ha ido mal en la consulta a la   base de datos");
