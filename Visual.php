@@ -38,7 +38,7 @@ function permisos() {
         }
 }       //inserta datos en la tabla visual mediante post
         if ($_SERVER['REQUEST_METHOD'] == 'POST'){
-        $sql = "INSERT INTO visual VALUES ('".$_POST[titulo]."', '".$_POST[url]."', '".$_POST[periodoAsociado]."', '".$_POST[tipo]."')";		  
+        $sql = "INSERT INTO visual VALUES ('".$_POST[id_visual]."','".$_POST[titulo]."', '".$_POST[url]."', '".$_POST[periodoAsociado]."', '".$_POST[tipo]."')";		  
         $resultado = mysqli_query($conexion,$sql) or die ( "Algo ha ido mal en la consulta a la   base de datos en post");
         $datos = mysqli_fetch_all($resultado,MYSQLI_ASSOC);
         header("HTTP/1.1 200 OK");
