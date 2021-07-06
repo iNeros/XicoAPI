@@ -31,7 +31,7 @@ function permisos() {
         exit();
         }if (isset($_GET['nombre'])) { 
         //$token = $_GET['ruta']."&token=".$_GET['token'];
-        $url = mysql_real_escape_string( urlencode($_GET['ruta']) );
+        $url = mysqli_real_escape_string( urlencode($_GET['ruta']) );
         $sql = "INSERT INTO archivos_docentes VALUES (NULL, '".$_GET['nombre']."', '".$url."', '".$_GET['tipo']."', '".$_GET['id_actividades1']."')";		  
         $resultado = mysqli_query($conexion,$sql) or die ( "Algo ha ido mal en la consulta a la base de datos");
         $datos = mysqli_fetch_all($resultado,MYSQLI_ASSOC);
