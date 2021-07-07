@@ -44,8 +44,9 @@ function permisos() {
         $sql = "SELECT ruta FROM archivos_docentes WHERE  id_actividades = '".$_GET['prueba']."' ORDER BY id_archivo desc";
         $resultado = mysqli_query($conexion,$sql) or die ( "Algo ha ido mal en la consulta a la   base de datos");
         $decodificado = base64_decode($resultado);
-        header("HTTP/1.1 200 OK");
-        echo json_encode($decodificado);
+        echo "hola":
+        echo $decodificado;
+        echo "fin";
         exit();
         }else{//consultar archivos de todos los maestros
         $sql = "SELECT * FROM archivos_docentes ORDER BY id_archivo desc";
