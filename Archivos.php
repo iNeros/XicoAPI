@@ -58,9 +58,9 @@ function permisos() {
         }
 }       //inserta archivos en la tabla archivos mediante post
         if ($_SERVER['REQUEST_METHOD'] == 'POST'){
-        $token = $_POST[ruta]."&token=".$_POST[token];
+        //$token = $_POST[ruta]."&token=".$_POST[token];
         //$url = mysqli_real_escape_string( urlencode("".$_POST[ruta].""));
-        $sql = "INSERT INTO archivos_docentes VALUES (NULL, '".$_POST[nombre]."', '".$token."', '".$_POST[tipo]."', '".$_POST[id_actividades]."')";		  
+        $sql = "INSERT INTO archivos_docentes VALUES (NULL, '".$_POST[nombre]."', '".$_POST[ruta]."', '".$_POST[tipo]."', '".$_POST[id_actividades]."')";		  
         $resultado = mysqli_query($conexion,$sql) or die ( "Algo ha ido mal en la consulta a la   base de datos en post 1");
         $datos = mysqli_fetch_all($resultado,MYSQLI_ASSOC);
         header("HTTP/1.1 200 OK");
