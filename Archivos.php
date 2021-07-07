@@ -29,25 +29,6 @@ function permisos() {
         header("HTTP/1.1 200 OK");
         echo json_encode($datos);
         exit();
-        }if (isset($_GET['nombre'])) { 
-        //$token = $_GET['ruta']."&token=".$_GET['token'];
-        //$url = mysqli_real_escape_string( urlencode("https://firebasestorage.googleapis.com/v0/b/xicoclassproject-579bb.appspot.com/o/ArchivosDocentes%2F101%2FERRORES%20NERO.txt?alt=media&token=905123f1-33ad-47c6-8277-b7dd6fad2396") );
-        //$cadena = $_GET['ruta'];
-        //$codificado = base64_encode($cadena);
-        $sql = "INSERT INTO archivos_docentes VALUES (NULL, '".$_GET['nombre']."', '".$_GET['ruta']."', '".$_GET['tipo']."', '".$_GET['id_actividades1']."')";		  
-        $resultado = mysqli_query($conexion,$sql) or die ( "Algo ha ido mal en la consulta a la base de datos");
-        $datos = mysqli_fetch_all($resultado,MYSQLI_ASSOC);
-        header("HTTP/1.1 200 OK");
-        echo json_encode($datos);
-        exit();
-        }if (isset($_GET['prueba'])) { 
-        $sql = "SELECT ruta FROM archivos_docentes WHERE  id_actividades = '".$_GET['prueba']."' ORDER BY id_archivo desc";
-        $resultado = mysqli_query($conexion,$sql) or die ( "Algo ha ido mal en la consulta a la   base de datos");
-        $decodificado = base64_decode($resultado);
-        echo "hola";
-        echo $decodificado;
-        echo "fin";
-        exit();
         }else{//consultar archivos de todos los maestros
         $sql = "SELECT * FROM archivos_docentes ORDER BY id_archivo desc";
         $resultado = mysqli_query($conexion,$sql) or die ( "Algo ha ido mal en la consulta a la   base de datos");
@@ -58,9 +39,9 @@ function permisos() {
         }
 }       //inserta archivos en la tabla archivos mediante post
         if ($_SERVER['REQUEST_METHOD'] == 'POST'){
-        //$token = $_POST[ruta]."&token=".$_POST[token];
-        //$url = mysqli_real_escape_string( urlencode("".$_POST[ruta].""));
-        $sql = "INSERT INTO archivos_docentes VALUES (NULL, '".$_POST[nombre]."', '".$_POST[ruta]."', '".$_POST[tipo]."', '".$_POST[id_actividades]."')";		  
+        $suma = $_POST[id_actividades];
+        $rst = $suma + 1;
+        $sql = "INSERT INTO archivos_docentes VALUES (NULL, '".$_POST[nombre]."', '".$_POST[ruta]."', '".$_POST[tipo]."', '".$rst."')";		  
         $resultado = mysqli_query($conexion,$sql) or die ( "Algo ha ido mal en la consulta a la   base de datos en post 1");
         $datos = mysqli_fetch_all($resultado,MYSQLI_ASSOC);
         header("HTTP/1.1 200 OK");
