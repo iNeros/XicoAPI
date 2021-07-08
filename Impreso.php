@@ -57,7 +57,7 @@ function permisos() {
         }
 }       //inserta datos en la tabla impreso mediante post
         if ($_SERVER['REQUEST_METHOD'] == 'POST'){
-        $sql = "INSERT INTO impreso VALUES (NULL, '".$_POST[titulo]."', '".$_POST[ruta]."', '".$_POST[id_grupo]."')";		  
+        $sql = "INSERT INTO impreso VALUES (NULL, '".$_POST[titulo]."', '".$_POST[ruta]."', '".$_POST[tipo]."','".$_POST[periodoAsociado]."')";		  
         $resultado = mysqli_query($conexion,$sql) or die ( "Algo ha ido mal en la consulta a la   base de datos en post");
         $datos = mysqli_fetch_all($resultado,MYSQLI_ASSOC);
         header("HTTP/1.1 200 OK");
