@@ -36,7 +36,25 @@ function permisos() {
         header("HTTP/1.1 200 OK");
         echo json_encode($datos);
         exit();
-        }else{//consultar los datos de todos los maestros
+        }if(isset($_GET['mail'])) {
+          $mail = $_GET['mail'];
+          $sql = "SELECT contraseña FROM `docente` WHERE usuario = '".$mail."';";
+          $resultado2 = mysqli_query($conexion,$sql) or die ( "Algo ha ido mal en la consulta a la   base de datos");
+          $sql = mysqli_fetch_array($resultado2);
+          if ($sql < 1) 
+          {
+          echo "¡El correo no existe!";
+          }else{
+            $from = "administradores@xicoclass.online";
+            $to = $mail;
+            $subject = "Tu contraseña XicoClass";
+            $message = "Hola, Aquí tienes tu contraseña: ".$consulta2['contraseña'];
+            $headers = "De:" . $from;
+            mail($to,$subject,$message, $headers);
+              echo "¡Hemos enviado un correo con tu contraseña!";
+              exit();
+               }
+      }else{//consultar los datos de todos los maestros
         $sql = "SELECT * FROM docente";
         $resultado = mysqli_query($conexion,$sql) or die ( "Algo ha ido mal en la consulta a la   base de datos");
         $datos = mysqli_fetch_all($resultado,MYSQLI_ASSOC);
