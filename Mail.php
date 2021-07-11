@@ -38,7 +38,7 @@ if(isset($_GET['mail'])) {
     </body><html>";
         $cabeceras = 'MIME-Version: 1.0' . "\r\n";
         $cabeceras .= 'Content-type: text/html; charset=utf-8' . "\r\n";
-        $cabeceras = "From:" . $from;
+        $cabeceras = "From:" . $from . "\r\n";
         mail($to,$subject,$message,$cabeceras);
         echo "¡Te hemos enviado un correo con tu contraseña!";
         exit();}
