@@ -23,7 +23,7 @@ function permisos() {
         //consultar avisos por dia, semana o meses, usando id_grado
         if ($_SERVER['REQUEST_METHOD'] == 'GET'){
         if($_GET['tiempo']=='1'){
-        $fecha_actual = date("Y-m-d",strtotime($fecha_actual."- 4 hour"));
+        $fecha_actual = date("Y-m-d",strtotime($fecha_actual."- 5 hour"));
         $sql = "SELECT * FROM avisos WHERE fecha BETWEEN '".$fecha_actual."' and DATE_ADD(sysdate(), INTERVAL -5 HOUR) AND id_grupo = '".$_GET['id_grupo']."'ORDER BY id_avisos desc";
         $resultado = mysqli_query($conexion,$sql) or die ( "Algo ha ido mal en la consulta a la   base de datos");
         $datos = mysqli_fetch_all($resultado,MYSQLI_ASSOC);
@@ -32,9 +32,9 @@ function permisos() {
         exit();
         }if($_GET['tiempo']=='2'){
         $fecha_actual = date("Y-m-d",strtotime($fecha_actual."- 7 days"));
-        $fecha_actual = date("Y-m-d",strtotime($fecha_actual."- 4 hour"));
+        $fecha_actual = date("Y-m-d",strtotime($fecha_actual."- 5 hour"));
         $fecha_actual1 = date("Y-m-d"); 
-        $fecha_actual1 = date("Y-m-d",strtotime($fecha_actual1."- 4 hour"));
+        $fecha_actual1 = date("Y-m-d",strtotime($fecha_actual1."- 5 hour"));
         $sql = "SELECT * FROM avisos WHERE fecha BETWEEN '".$fecha_actual."' and '".$fecha_actual1."' AND id_grupo = '".$_GET['id_grupo']."'ORDER BY id_avisos desc";
         $resultado = mysqli_query($conexion,$sql) or die ( "Algo ha ido mal en la consulta a la   base de datos");
         $datos = mysqli_fetch_all($resultado,MYSQLI_ASSOC);
@@ -43,7 +43,7 @@ function permisos() {
         exit();
         }if($_GET['tiempo']=='3'){
         $fecha_actual = date("Y-m-d",strtotime($fecha_actual."- 7 days"));
-        $fecha_actual = date("Y-m-d",strtotime($fecha_actual."- 4 hour"));  
+        $fecha_actual = date("Y-m-d",strtotime($fecha_actual."- 5 hour"));  
         $sql = "SELECT * FROM avisos WHERE fecha < '".$fecha_actual."' AND id_grupo = '".$_GET['id_grupo']."'ORDER BY id_avisos desc";
         $resultado = mysqli_query($conexion,$sql) or die ( "Algo ha ido mal en la consulta a la   base de datos");
         $datos = mysqli_fetch_all($resultado,MYSQLI_ASSOC);

@@ -1,4 +1,6 @@
 <?php
+//Así se solicita por GET.
+//https://xicoclass.online/Mail.php?mail=ejemplo@gmail.com
 if(isset($_GET['mail'])) {
         include('db/conopen2.php'); 
         $sql = "SELECT * FROM `docente` WHERE usuario = '".$_GET['mail']."';";
