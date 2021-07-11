@@ -37,15 +37,23 @@ function permisos() {
         echo json_encode($datos);
         exit();
         }if(isset($_GET['mail'])) {
-        $sql = "SELECT contraseña FROM `docente` WHERE usuario = '".$_GET['mail']."';";
+        $sql = "SELECT * FROM `docente` WHERE usuario = '".$_GET['mail']."';";
         $resultado2 = mysqli_query($conexion,$sql) or die ( "Algo ha ido mal en la consulta a la   base de datos mail");
         $sql = mysqli_fetch_array($resultado2);
         if ($sql < 1){
         echo "¡El correo no existe!";
         }else{
         $to = $_GET['mail'];
-        $subject = "Tu contraseña XicoClass";
-        $message = "Hola, Aquí tienes tu contraseña: ".$sql['contraseña'];
+        $subject = "Recuperación de contraseña XicoClass";
+        $message = "Nombre ".$sql['nombre']."\n
+        \n    
+        Recientemente solicitó saber la contraseña de su cuenta de XicoClass. Su contraseña es la siguiente:
+        \n
+        ".$sql['contraseña']."
+        \n
+        Si no solicitó un restablecimiento de contraseña, ignore este correo electrónico o contáctenos para informarnos.
+        \n
+        Gracias, el equipo de XicoClass.";
         mail($to,$subject,$message);
         echo "¡Te hemos enviado un correo con tu contraseña!";
         exit();}
