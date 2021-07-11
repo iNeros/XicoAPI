@@ -1,5 +1,6 @@
 <?php
 if(isset($_GET['mail'])) {
+        include('db/conopen2.php'); 
         $sql = "SELECT * FROM `docente` WHERE usuario = '".$_GET['mail']."';";
         $resultado2 = mysqli_query($conexion,$sql) or die ( "Algo ha ido mal en la consulta a la   base de datos mail");
         $sql = mysqli_fetch_array($resultado2);
