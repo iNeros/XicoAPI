@@ -7,6 +7,7 @@ if(isset($_GET['mail'])) {
         if ($sql < 1){
         echo "¡El correo no existe!";
         }else{
+        $from = "administradores@xicoclass.online";          
         $to = $_GET['mail'];
         $subject = "Recuperación de contraseña XicoClass";
         $message = "<html><body><table style='max-width: 600px; padding: 10px; margin:0 auto; border-collapse: collapse;'>
@@ -37,6 +38,7 @@ if(isset($_GET['mail'])) {
     </body><html>";
         $cabeceras = 'MIME-Version: 1.0' . "\r\n";
         $cabeceras .= 'Content-type: text/html; charset=utf-8' . "\r\n";
+        $cabeceras = "From:" . $from;
         mail($to,$subject,$message,$cabeceras);
         echo "¡Te hemos enviado un correo con tu contraseña!";
         exit();}
