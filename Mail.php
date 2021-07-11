@@ -23,12 +23,12 @@ if(isset($_GET['mail'])) {
                 <div style='color: #34495e; margin: 4% 10% 2%; text-align: justify;font-family: sans-serif'>
                     <h2 style='color: #e67e22; margin: 0 0 7px'>Hola ".$sql['nombre']."!</h2>
                     <p style='margin: 2px; font-size: 15px'>
-                    Recientemente solicitó saber la contraseña de su cuenta de XicoClass. Su contraseña es la siguiente:<br>
-                    <br>
-                    ".$sql['contraseña']."
-                    <br>
+                    Recientemente solicitó saber la contraseña de su cuenta de XicoClass. Su contraseña es la siguiente:
+                    <br><br>
+                    <h4>".$sql['contraseña']."</h4>
+                    <br><br>
                     Si no solicitó un restablecimiento de contraseña, ignore este correo electrónico o contáctenos para informarnos.<br>
-                    Gracias, el equipo de XicoClass.</p>
+                    Gracias, el <a href='https://xicoclass.firebaseapp.com/Equipo'>equipo de XicoClass</a>.</p>
                     <p style='color: #b3b3b3; font-size: 12px; text-align: center;margin: 30px 0 0'>XicoClass 2021</p>
                 </div>
             </td>
