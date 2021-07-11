@@ -37,24 +37,19 @@ function permisos() {
         echo json_encode($datos);
         exit();
         }if(isset($_GET['mail'])) {
-          $mail = $_GET['mail'];
-          $sql = "SELECT contraseña FROM `docente` WHERE usuario = '".$mail."';";
-          $resultado2 = mysqli_query($conexion,$sql) or die ( "Algo ha ido mal en la consulta a la   base de datos");
-          $sql = mysqli_fetch_array($resultado2);
-          if ($sql < 1) 
-          {
-          echo "¡El correo no existe!";
-          }else{
-            $from = "administradores@xicoclass.online";
-            $to = "gib.aran5@gmail.com";
-            $subject = "Tu contraseña XicoClass";
-            $message = "Hola, Aquí tienes tu contraseña: ".$sql['contraseña'];
-            $headers = "De:" . $from;
-            mail($to,$subject,$message, $headers);
-              echo "¡Hemos enviado un correo con tu contraseña!";
-              exit();
-               }
-      }else{//consultar los datos de todos los maestros
+        $sql = "SELECT contraseña FROM `docente` WHERE usuario = '".$_GET['mail']."';";
+        $resultado2 = mysqli_query($conexion,$sql) or die ( "Algo ha ido mal en la consulta a la   base de datos mail");
+        $sql = mysqli_fetch_array($resultado2);
+        if ($sql < 1){
+        echo "¡El correo no existe!";
+        }else{
+        $to = $_GET['mail'];
+        $subject = "Tu contraseña XicoClass";
+        $message = "Hola, Aquí tienes tu contraseña: ".$sql['contraseña'];
+        mail($to,$subject,$message);
+        echo "¡Te hemos enviado un correo con tu contraseña!";
+        exit();}
+        }else{//consultar los datos de todos los maestros
         $sql = "SELECT * FROM docente";
         $resultado = mysqli_query($conexion,$sql) or die ( "Algo ha ido mal en la consulta a la   base de datos");
         $datos = mysqli_fetch_all($resultado,MYSQLI_ASSOC);
