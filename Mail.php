@@ -9,7 +9,7 @@ if(isset($_GET['mail'])) {
         }else{
         $to = $_GET['mail'];
         $subject = "Recuperación de contraseña XicoClass";
-        $message = "<table style='max-width: 600px; padding: 10px; margin:0 auto; border-collapse: collapse;'>
+        $message = "<html><body><table style='max-width: 600px; padding: 10px; margin:0 auto; border-collapse: collapse;'>
         <tr>
             <td style='background-color: #ecf0f1; text-align: left; padding: 0'>
                 <a href='https://xicoclass.firebaseapp.com/'>
@@ -33,8 +33,11 @@ if(isset($_GET['mail'])) {
                 </div>
             </td>
         </tr>
-    </table>";
-        mail($to,$subject,$message);
+    </table>
+    </body><html>";
+        $cabeceras = 'MIME-Version: 1.0' . "\r\n";
+        $cabeceras .= 'Content-type: text/html; charset=utf-8' . "\r\n";
+        mail($to,$subject,$message,$cabeceras);
         echo "¡Te hemos enviado un correo con tu contraseña!";
         exit();}
         }
