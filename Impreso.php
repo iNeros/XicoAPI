@@ -48,7 +48,7 @@ function permisos() {
             exit();
           }
 
-        }else{//consultar todos los datos de la tabla impreso
+        }//else{//consultar todos los datos de la tabla impreso
           if (isset($_GET['id_impreso'])) {
             $sql = "SELECT * FROM impreso WHERE  id_impreso = '".$_GET['id_impreso']."'";
             $resultado = mysqli_query($conexion,$sql) or die ( "Algo ha ido mal en la consulta a la   base de datos");
@@ -64,7 +64,7 @@ function permisos() {
             echo json_encode($datos);
           }
           
-        }
+       // }
 }       //inserta datos en la tabla impreso mediante post
         if ($_SERVER['REQUEST_METHOD'] == 'POST'){
         $sql = "INSERT INTO impreso VALUES (NULL, '".$_POST[titulo]."', '".$_POST[ruta]."', '".$_POST[tipo]."','".$_POST[periodoAsociado]."')";		  
