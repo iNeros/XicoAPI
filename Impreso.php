@@ -49,11 +49,21 @@ function permisos() {
           }
 
         }else{//consultar todos los datos de la tabla impreso
-        $sql = "SELECT * FROM impreso";
-        $resultado = mysqli_query($conexion,$sql) or die ( "Algo ha ido mal en la consulta a la   base de datos");
-        $datos = mysqli_fetch_all($resultado,MYSQLI_ASSOC);
-        header("HTTP/1.1 200 OK");
-        echo json_encode($datos);
+          if (isset($_GET['id_impreso'])) {
+            $sql = "SELECT * FROM impreso WHERE  id_impreso = '".$_GET['id_impreso']."'";
+            $resultado = mysqli_query($conexion,$sql) or die ( "Algo ha ido mal en la consulta a la   base de datos");
+            $datos = mysqli_fetch_all($resultado,MYSQLI_ASSOC);
+            header("HTTP/1.1 200 OK");
+            echo json_encode($datos);
+            exit();
+          }else{
+            $sql = "SELECT * FROM impreso";
+            $resultado = mysqli_query($conexion,$sql) or die ( "Algo ha ido mal en la consulta a la   base de datos");
+            $datos = mysqli_fetch_all($resultado,MYSQLI_ASSOC);
+            header("HTTP/1.1 200 OK");
+            echo json_encode($datos);
+          }
+          
         }
 }       //inserta datos en la tabla impreso mediante post
         if ($_SERVER['REQUEST_METHOD'] == 'POST'){
