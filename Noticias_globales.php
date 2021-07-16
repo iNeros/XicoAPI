@@ -44,6 +44,7 @@ function permisos() {
         $datos = mysqli_fetch_all($resultado,MYSQLI_ASSOC);
         header("HTTP/1.1 200 OK");
         echo json_encode($datos);
+        exit();
         }
 }       //inserta noticias globales en la tabla noticias_globales mediante post
         if ($_SERVER['REQUEST_METHOD'] == 'POST'){
