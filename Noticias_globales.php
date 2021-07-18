@@ -39,7 +39,7 @@ function permisos() {
         echo json_encode($datos);
         exit();
         }else{//consultar todas las noticias globales
-        $sql = "SELECT * FROM noticias_globales";
+        $sql = "SELECT * FROM noticias_globales ORDER BY id_noticias desc";
         $resultado = mysqli_query($conexion,$sql) or die ( "Algo ha ido mal en la consulta a la   base de datos");
         $datos = mysqli_fetch_all($resultado,MYSQLI_ASSOC);
         header("HTTP/1.1 200 OK");
