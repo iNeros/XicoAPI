@@ -86,7 +86,8 @@ if(isset($_GET['confirmar'])){
                     <p style='margin: 2px; font-size: 15px'>
                     Para habilitar su cuenta y continuar, presione el botón para confirmar su cuenta en XicoClass
                     <br><br>
-                    <input type='button' onclick='location.href='https://xicoclass.online/Mail.php?upuser=".$to."'' value='CONFIRMAR' style='background-color: #0547A1'/>
+                    <input type='button' onclick='https://xicoclass.online/Mail.php?upuser=".$to."' value='CONFIRMAR'/>
+                    <button ><a href='https://xicoclass.online/Mail.php?upuser=".$to."'>CONFIRMAR</a></button>
                     <br><br>
                     Si no solicitó un registro a XicoClass, ignore este correo electrónico o contáctenos para informarnos.<br>
                     Gracias, el <a href='https://xicoclass.firebaseapp.com/Equipo'>equipo de XicoClass</a>.</p>
