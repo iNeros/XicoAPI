@@ -32,7 +32,7 @@ if(isset($_GET['mail'])) {
         <tr>
             <td style='background-color: #ecf0f1; text-align: left; padding: 0'>
                 <a href='https://xicoclass.firebaseapp.com/'>
-                    <img width='100%' style='padding: 0; display: block' src='https://xicoclass.firebaseapp.com/img/carusel1.99d2236c.png'>
+                    <img width='100%' style='padding: 0; display: block' src='https://firebasestorage.googleapis.com/v0/b/xicoclassproject-579bb.appspot.com/o/CarouselHome%2Fcarusel1.png?alt=media&token=6dc17cc0-50e9-422c-98d1-4ca00844a2dc>
                 </a>
             </td>
         </tr>
@@ -74,7 +74,7 @@ if(isset($_GET['confirmar'])){
         <tr>
             <td style='background-color: #ecf0f1; text-align: left; padding: 0'>
                 <a href='https://xicoclass.firebaseapp.com/'>
-                    <img width='100%' style='padding: 0; display: block' src='https://xicoclass.firebaseapp.com/img/carusel1.99d2236c.png'>
+                    <img width='100%' style='padding: 0; display: block' src='https://firebasestorage.googleapis.com/v0/b/xicoclassproject-579bb.appspot.com/o/CarouselHome%2Fcarusel1.png?alt=media&token=6dc17cc0-50e9-422c-98d1-4ca00844a2dc'>
                 </a>
             </td>
         </tr>
@@ -86,7 +86,7 @@ if(isset($_GET['confirmar'])){
                     <p style='margin: 2px; font-size: 15px'>
                     Para habilitar su cuenta y continuar, presione el botón para confirmar su cuenta en XicoClass
                     <br><br>
-                    <button href='https://xicoclass.online/Mail.php?upuser=".$to."'>CONFIRMAR</button>
+                    <input type='button' onclick='location.href='https://xicoclass.online/Mail.php?upuser=".$to."'' value='CONFIRMAR' style='background-color: #0547A1'/>
                     <br><br>
                     Si no solicitó un registro a XicoClass, ignore este correo electrónico o contáctenos para informarnos.<br>
                     Gracias, el <a href='https://xicoclass.firebaseapp.com/Equipo'>equipo de XicoClass</a>.</p>
