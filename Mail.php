@@ -82,11 +82,10 @@ if(isset($_GET['confirmar'])){
         <tr>
             <td style='background-color: #ecf0f1'>
                 <div style='color: #34495e; margin: 4% 10% 2%; text-align: justify;font-family: sans-serif'>
-                    <h2 style='color: #e67e22; margin: 0 0 7px'>¡Hola!</h2>
+                    <h2 style='color: #e67e22; margin: 0 0 7px'>¡Hola ".$_GET['confirmar']."!</h2>
                     <p style='margin: 2px; font-size: 15px'>
                     Para habilitar su cuenta y continuar, presione el botón para confirmar su cuenta en XicoClass
                     <br><br>
-                    <input type='button' onclick='https://xicoclass.online/Mail.php?upuser=".$to."' value='CONFIRMAR'/>
                     <button ><a href='https://xicoclass.online/Mail.php?upuser=".$to."'>CONFIRMAR</a></button>
                     <br><br>
                     Si no solicitó un registro a XicoClass, ignore este correo electrónico o contáctenos para informarnos.<br>
