@@ -44,5 +44,9 @@ if(isset($_GET['mail'])) {
         mail($to,$subject,$message,$cabeceras);
         echo "¡Te hemos enviado un correo con tu contraseña!";
         exit();}
-        }
+}if(isset($_GET['upuser'])) {
+    include('db/conopen2.php'); 
+    $sql = "UPDATE docente SET `tipoUsuario`='".$_GET[tipoUsuario]."' WHERE  `usuario`='".$_GET[usuario]."';";
+    mysqli_query($conexion,$sql) or die ( "Algo ha ido mal en la consulta a la   base de datos tipo usuario update");
+}
 ?>

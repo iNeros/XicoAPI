@@ -60,7 +60,7 @@ function permisos() {
         }
 }       //inserta nuevo docente en tabla docente mediante post
         if ($_SERVER['REQUEST_METHOD'] == 'POST'){
-        $sql = "INSERT INTO docente VALUES (NULL, '".$_POST[nombre]."', '".$_POST[appPat]."', '".$_POST[appMat]."', '".$_POST[usuario]."', '".$_POST[contraseña]."')";		  
+        $sql = "INSERT INTO docente VALUES (NULL, '".$_POST[nombre]."', '".$_POST[appPat]."', '".$_POST[appMat]."', ".$_POST[tipoUsuario].", '".$_POST[usuario]."', '".$_POST[contraseña]."')";		  
         $resultado = mysqli_query($conexion,$sql) or die ( "Algo ha ido mal en la consulta a la   base de datos en post");
         $datos = mysqli_fetch_all($resultado,MYSQLI_ASSOC);
         header("HTTP/1.1 200 OK");
@@ -68,7 +68,7 @@ function permisos() {
         exit();
   }     //update a tabla docente usando el id_docente
         if ($_SERVER['REQUEST_METHOD'] == 'PUT'){
-        $sql = "UPDATE docente SET `nombre`='".$_GET[nombre]."',`appPat`='".$_GET[appPat]."', `appMat`='".$_GET[appMat]."', `usuario`='".$_GET[usuario]."', `contraseña`='".$_GET[contraseña]."' WHERE  `id_docente`='".$_GET[id_docente]."';";
+        $sql = "UPDATE docente SET `nombre`='".$_GET[nombre]."',`appPat`='".$_GET[appPat]."', `appMat`='".$_GET[appMat]."', `tipoUsuario`='".$_GET[tipoUsuario]."', `usuario`='".$_GET[usuario]."', `contraseña`='".$_GET[contraseña]."' WHERE  `id_docente`='".$_GET[id_docente]."';";
         $resultado = mysqli_query($conexion,$sql) or die ( "Algo ha ido mal en la consulta a la   base de datos put");
         $datos = mysqli_fetch_all($resultado,MYSQLI_ASSOC);
         header("HTTP/1.1 200 OK");
