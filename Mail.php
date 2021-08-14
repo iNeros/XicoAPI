@@ -1,6 +1,22 @@
 <?php
 //Así se solicita por GET.
 //https://xicoclass.online/Mail.php?mail=ejemplo@gmail.com
+function permisos() {  
+    if (isset($_SERVER['HTTP_ORIGIN'])){
+        header("Access-Control-Allow-Origin: *");
+        header("Access-Control-Allow-Methods: GET, POST, PATCH, PUT, DELETE, OPTIONS");
+        header("Access-Control-Allow-Headers: Origin, Authorization, X-Requested-With, Content-Type, Accept");
+        header('Access-Control-Allow-Credentials: true');      
+    }  
+    if ($_SERVER['REQUEST_METHOD'] == 'OPTIONS'){
+      if (isset($_SERVER['HTTP_ACCESS_CONTROL_REQUEST_METHOD']))          
+          header("Access-Control-Allow-Methods: GET, POST, PATCH, PUT, DELETE, OPTIONS");
+      if (isset($_SERVER['HTTP_ACCESS_CONTROL_REQUEST_HEADERS']))
+          header("Access-Control-Allow-Headers: Origin, Authorization, X-Requested-With, Content-Type, Accept");
+      exit(0);
+    }
+  }
+  permisos();
 if(isset($_GET['mail'])) {
         include('db/conopen2.php'); 
         $sql = "SELECT * FROM `docente` WHERE usuario = '".$_GET['mail']."';";
