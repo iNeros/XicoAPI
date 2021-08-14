@@ -68,7 +68,7 @@ if(isset($_GET['mail'])) {
 }
 if(isset($_GET['confirmar'])){
         $from = "administradores@xicoclass.online";          
-        $to = $_GET['mail'];
+        $to = $_GET['mail1'];
         $subject = "Confirmación de registro docente XicoClass";
         $message = "<html><body><table style='max-width: 600px; padding: 10px; margin:0 auto; border-collapse: collapse;'>
         <tr>
