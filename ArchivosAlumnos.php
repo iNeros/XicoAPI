@@ -22,7 +22,14 @@ function permisos() {
         
         //consultar todos los archivos de un alumno en especifico
         if ($_SERVER['REQUEST_METHOD'] == 'GET'){
-        if (isset($_GET['id_alumno'])) { 
+        if (isset($_GET['ArchivosAct'])) { 
+        $sql = "SELECT * FROM archivos_alumnos WHERE id_actividad = '".$_GET['ArchivosAct']."' ORDER BY id_alumno DESC";
+        $resultado = mysqli_query($conexion,$sql) or die ( "Algo ha ido mal en la consulta a la   base de datos");
+        $datos = mysqli_fetch_all($resultado,MYSQLI_ASSOC);
+        header("HTTP/1.1 200 OK");
+        echo json_encode($datos);
+        exit();
+        }if (isset($_GET['id_alumno'])) { 
         $sql = "SELECT * FROM archivos_alumnos WHERE  id_alumno = '".$_GET['id_alumno']."' ORDER BY id_archivos_alumnos desc";
         $resultado = mysqli_query($conexion,$sql) or die ( "Algo ha ido mal en la consulta a la   base de datos");
         $datos = mysqli_fetch_all($resultado,MYSQLI_ASSOC);
