@@ -32,7 +32,7 @@ if(isset($_GET['mail'])) {
         <tr>
             <td style='background-color: #ecf0f1; text-align: left; padding: 0'>
                 <a href='https://xicoclass.firebaseapp.com/'>
-                    <img width='100%' style='padding: 0; display: block' src='https://firebasestorage.googleapis.com/v0/b/xicoclassproject-579bb.appspot.com/o/CarouselHome%2Fcarusel1.png?alt=media&token=6dc17cc0-50e9-422c-98d1-4ca00844a2dc>
+                    <img width='100%' style='padding: 0; display: block' src='https://firebasestorage.googleapis.com/v0/b/xicoclassproject-579bb.appspot.com/o/CarouselHome%2Fcarusel1.png?alt=media&token=6dc17cc0-50e9-422c-98d1-4ca00844a2dc'>
                 </a>
             </td>
         </tr>
