@@ -108,6 +108,6 @@ if (isset($_GET['periodoAsociado'])) {
     $sql = "SELECT periodo FROM grupo WHERE id_grupo = '".$_GET['periodoAsociado']."'";
     $resultado = mysqli_query($conexion,$sql) or die ( "Algo ha ido mal en la consulta a la   base de datos");
     $datos = mysqli_fetch_array($resultado);
-    echo $datos;
+    echo $datos['periodo'];
 }
 ?>
