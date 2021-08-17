@@ -22,8 +22,11 @@ function permisos() {
         
         //consultar material didactico por id_didactico
         if ($_SERVER['REQUEST_METHOD'] == 'GET'){
-        if (isset($_GET['periodoAsociado'])) { 
-        $sql = "SELECT * FROM didactico WHERE  periodoAsociado = '".$_GET['periodoAsociado']."'";
+        if (isset($_GET['periodoAsociado'])) {
+        $sql0 = "SELECT periodo FROM grupo WHERE id_grupo = '".$_GET['periodoAsociado']."'";
+        $resultado0 = mysqli_query($conexion,$sql0) or die ( "Algo ha ido mal en la consulta a la   base de datos");
+        $periodo = mysqli_fetch_array($resultado0); 
+        $sql = "SELECT * FROM didactico WHERE  periodoAsociado = '".$periodo['periodo']."'";
         $resultado = mysqli_query($conexion,$sql) or die ( "Algo ha ido mal en la consulta a la   base de datos");
         $datos = mysqli_fetch_all($resultado,MYSQLI_ASSOC);
         header("HTTP/1.1 200 OK");
