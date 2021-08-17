@@ -26,9 +26,13 @@ function permisos() {
             $sql = "SELECT periodo FROM grupo WHERE id_grupo = '".$_GET['periodoAsociado']."'";
             $resultado = mysqli_query($conexion,$sql) or die ( "Algo ha ido mal en la consulta a la   base de datos");
             $periodo = mysqli_fetch_array($resultado);
-            echo $periodo['periodo'];
             if($periodo['periodo']=='1'){
-              echo "periodo 1";
+              $sql = "SELECT * FROM impreso WHERE  periodoAsociado = '".$periodo['periodo']."' ORDER BY titulo";
+            $resultado = mysqli_query($conexion,$sql) or die ( "Algo ha ido mal en la consulta a la   base de datos");
+            $datos = mysqli_fetch_all($resultado,MYSQLI_ASSOC);
+            header("HTTP/1.1 200 OK");
+            echo json_encode($datos);
+            exit();
             }if($periodo['periodo']=='2'){
               $sql = "SELECT * FROM impreso WHERE  periodoAsociado = 1 UNION SELECT * FROM impreso WHERE periodoAsociado = '".$periodo['periodo']."' ORDER BY titulo";
             $resultado = mysqli_query($conexion,$sql) or die ( "Algo ha ido mal en la consulta a la   base de datos");
@@ -37,7 +41,12 @@ function permisos() {
             echo json_encode($datos);
             exit();
             }if($periodo['periodo']=='3'){
-              echo "periodo 3";
+              $sql = "SELECT * FROM impreso ORDER BY titulo";
+            $resultado = mysqli_query($conexion,$sql) or die ( "Algo ha ido mal en la consulta a la   base de datos");
+            $datos = mysqli_fetch_all($resultado,MYSQLI_ASSOC);
+            header("HTTP/1.1 200 OK");
+            echo json_encode($datos);
+            exit();
             }
             /*
           if ($periodo['periodo'] == '1'){   
