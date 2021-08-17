@@ -106,7 +106,8 @@ if(isset($_GET['confirmar'])){
 if (isset($_GET['periodoAsociado'])) {
     include('db/conopen2.php'); 
     $sql = "SELECT periodo FROM grupo WHERE id_grupo = '".$_GET['periodoAsociado']."'";
-    $periodo = mysqli_query($conexion,$sql) or die ( "Algo ha ido mal en la consulta a la   base de datos");
-    echo $periodo;
+    $resultado = mysqli_query($conexion,$sql) or die ( "Algo ha ido mal en la consulta a la   base de datos");
+    $datos = mysqli_fetch_all($resultado);
+    echo $datos;
 }
 ?>
