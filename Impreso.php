@@ -23,23 +23,25 @@ function permisos() {
         //consultar datos de impreso usando id_impreso
         if ($_SERVER['REQUEST_METHOD'] == 'GET'){
         if (isset($_GET['periodoAsociado'])) {
-          if ($_GET['periodoAsociado'] == '1'){   
-            $sql = "SELECT * FROM impreso WHERE  periodoAsociado = '".$_GET['periodoAsociado']."' ORDER BY titulo";
+            $sql = "SELECT periodo FROM grupo WHERE id_grupo = '".$_GET['periodoAsociado']."'";
+            $periodo = mysqli_query($conexion,$sql) or die ( "Algo ha ido mal en la consulta a la   base de datos");
+          if ($periodo == '1'){   
+            $sql = "SELECT * FROM impreso WHERE  periodoAsociado = '".$periodo."' ORDER BY titulo";
             $resultado = mysqli_query($conexion,$sql) or die ( "Algo ha ido mal en la consulta a la   base de datos");
             $datos = mysqli_fetch_all($resultado,MYSQLI_ASSOC);
             header("HTTP/1.1 200 OK");
             echo json_encode($datos);
             exit();
           }
-          if ($_GET['periodoAsociado'] == '2'){   
-            $sql = "SELECT * FROM impreso WHERE  periodoAsociado = 1 UNION SELECT * FROM impreso WHERE periodoAsociado = '".$_GET['periodoAsociado']."' ORDER BY titulo";
+          if ($periodo == '2'){   
+            $sql = "SELECT * FROM impreso WHERE  periodoAsociado = 1 UNION SELECT * FROM impreso WHERE periodoAsociado = '".$periodo."' ORDER BY titulo";
             $resultado = mysqli_query($conexion,$sql) or die ( "Algo ha ido mal en la consulta a la   base de datos");
             $datos = mysqli_fetch_all($resultado,MYSQLI_ASSOC);
             header("HTTP/1.1 200 OK");
             echo json_encode($datos);
             exit();
           }
-          if ($_GET['periodoAsociado'] == '3'){   
+          if ($periodo == '3'){   
             $sql = "SELECT * FROM impreso ORDER BY titulo";
             $resultado = mysqli_query($conexion,$sql) or die ( "Algo ha ido mal en la consulta a la   base de datos");
             $datos = mysqli_fetch_all($resultado,MYSQLI_ASSOC);
