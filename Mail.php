@@ -31,8 +31,8 @@ if(isset($_GET['mail'])) {
         $message = "<html><body><table style='max-width: 600px; padding: 10px; margin:0 auto; border-collapse: collapse;'>
         <tr>
             <td style='background-color: #ecf0f1; text-align: left; padding: 0'>
-                <a href='https://xicoclass.firebaseapp.com/'>
-                    <img width='100%' style='padding: 0; display: block' src='https://firebasestorage.googleapis.com/v0/b/xicoclassproject-579bb.appspot.com/o/CarouselHome%2Fcarusel1.png?alt=media&token=6dc17cc0-50e9-422c-98d1-4ca00844a2dc'>
+                <a href='https://xicoclassproject-579bb.web.app/'>
+                    <img width='100%' style='padding: 0; display: block' src='https://firebasestorage.googleapis.com/v0/b/xicoclassproject-579bb.appspot.com/o/ImagenesCorreo%2FRecuperas%20Contra.png?alt=media&token=d40b6542-724e-4b2b-b470-b2c34166526f'>
                 </a>
             </td>
         </tr>
@@ -73,8 +73,8 @@ if(isset($_GET['confirmar'])){
         $message = "<html><body><table style='max-width: 600px; padding: 10px; margin:0 auto; border-collapse: collapse;'>
         <tr>
             <td style='background-color: #ecf0f1; text-align: left; padding: 0'>
-                <a href='https://xicoclass.firebaseapp.com/'>
-                    <img width='100%' style='padding: 0; display: block' src='https://firebasestorage.googleapis.com/v0/b/xicoclassproject-579bb.appspot.com/o/CarouselHome%2Fcarusel1.png?alt=media&token=6dc17cc0-50e9-422c-98d1-4ca00844a2dc'>
+                <a href='https://xicoclassproject-579bb.web.app/'>
+                    <img width='100%' style='padding: 0; display: block' src='https://firebasestorage.googleapis.com/v0/b/xicoclassproject-579bb.appspot.com/o/ImagenesCorreo%2FCorreos%20Confirmacion.png?alt=media&token=7cfa74cd-5d14-4120-b03a-ab1888178578'>
                 </a>
             </td>
         </tr>
@@ -86,7 +86,7 @@ if(isset($_GET['confirmar'])){
                     <p style='margin: 2px; font-size: 15px'>
                     Para habilitar su cuenta y continuar, presione el botón para confirmar su cuenta en XicoClass
                     <br><br>
-                    Haz click aqui. --> <a href='https://xicoclass.online/Mail.php?upuser=".$to."'>CONFIRMAR</a> <--
+                    Haz click aquí. --> <a href='https://xicoclass.online/Mail.php?upuser=".$to."'>CONFIRMAR</a> <--
                     <br><br>
                     Si no solicitó un registro a XicoClass, ignore este correo electrónico o contáctenos para informarnos.<br>
                     Gracias, el <a href='https://xicoclass.firebaseapp.com/Equipo'>equipo de XicoClass</a>.</p>

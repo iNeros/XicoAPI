@@ -23,7 +23,7 @@ function permisos() {
         //consultar datos del alumno por id_alumno
         if ($_SERVER['REQUEST_METHOD'] == 'GET'){
         if (isset($_GET['AlumnosGrupo'])) { 
-        $sql = "SELECT id_alumno , nombre , appPat , appMat FROM `alumno` WHERE id_grado = '".$_GET['AlumnosGrupo']."'";
+        $sql = "SELECT id_alumno , nombre , appPat , appMat FROM `alumno` WHERE id_grado = '".$_GET['AlumnosGrupo']."' ORDER BY id_alumno ASC";
         $resultado = mysqli_query($conexion,$sql) or die ( "Algo ha ido mal en la consulta a la   base de datos");
         $datos = mysqli_fetch_all($resultado,MYSQLI_ASSOC);
         header("HTTP/1.1 200 OK");
