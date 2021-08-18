@@ -51,8 +51,13 @@ function permisos() {
         echo json_encode($datos); 
         exit();}
         if(isset($_GET['id_docente'])){ 
-        $sql = "SELECT DISTINCTROW avisos.id_avisos,avisos.fecha,avisos.nombre,avisos.id_grupo,grupo.id_docente from grupo,avisos where id_docente = '".$_GET['id_docente']."' ORDER BY id_avisos DESC";
-        $resultado = mysqli_query($conexion,$sql) or die ( "Algo ha ido mal en la consulta a la   base de datos");
+          $sql = "SELECT id_grupo from grupo where id_docente = '".$_GET['id_docente']."'";
+          $resultado = mysqli_query($conexion,$sql) or die ( "Algo ha ido mal en la consulta a la   base de datos");
+          $grupo = mysqli_fetch_array($resultado);
+        while(!$grupo){
+          $sqls = $sqls+"SELECT avisos.id_avisos,avisos.fecha,avisos.nombre,avisos.id_grupo from avisos where id_grupo = '".$grupo["id_grupo"]."' UNION"
+        }
+        $resultado = mysqli_query($conexion,$sqls) or die ( "Algo ha ido mal en la consulta a la   base de datos avisos id_docente");
         $datos = mysqli_fetch_all($resultado,MYSQLI_ASSOC);
         header("HTTP/1.1 200 OK");
         echo json_encode($datos); 
