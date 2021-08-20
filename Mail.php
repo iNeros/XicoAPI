@@ -110,10 +110,10 @@ if(isset($_GET['id_docente'])){
         while($grupo = mysqli_fetch_array($resultado)){
         $sqls1 = "".$sqls1." SELECT avisos.id_avisos,avisos.fecha,avisos.nombre,avisos.id_grupo from avisos where id_grupo = ".$grupo['id_grupo']." UNION ";  
         }
-        $sqls1 = "".$sqls1." SELECT avisos.id_avisos,avisos.fecha,avisos.nombre,avisos.id_grupo from avisos where id_grupo = ".$grupo['id_grupo']."";
+        $sqls1 = "".$sqls1." SELECT avisos.id_avisos,avisos.fecha,avisos.nombre,avisos.id_grupo from avisos where id_grupo = 0";
         echo $sqls1;
         $sqls2 = "SELECT avisos.id_avisos,avisos.fecha,avisos.nombre,avisos.id_grupo from avisos where id_grupo = 28 UNION SELECT avisos.id_avisos,avisos.fecha,avisos.nombre,avisos.id_grupo from avisos where id_grupo = 26 UNION SELECT avisos.id_avisos,avisos.fecha,avisos.nombre,avisos.id_grupo from avisos where id_grupo = 25 UNION SELECT avisos.id_avisos,avisos.fecha,avisos.nombre,avisos.id_grupo from avisos where id_grupo = 24 UNION SELECT avisos.id_avisos,avisos.fecha,avisos.nombre,avisos.id_grupo from avisos where id_grupo = 20 UNION SELECT avisos.id_avisos,avisos.fecha,avisos.nombre,avisos.id_grupo from avisos where id_grupo = 2 UNION SELECT avisos.id_avisos,avisos.fecha,avisos.nombre,avisos.id_grupo from avisos where id_grupo = 1";
-        $resultado2 = mysqli_query($conexion,$sqls2) or die ( "Algo ha ido mal en la consulta a la   base de datos avisos id");
+        $resultado2 = mysqli_query($conexion,$sqls1) or die ( "Algo ha ido mal en la consulta a la   base de datos avisos id_final");
         echo $resultado2;
   
   //echo json_encode($datos);   
