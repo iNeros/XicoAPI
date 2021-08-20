@@ -104,6 +104,7 @@ if(isset($_GET['confirmar'])){
         exit();
 }
 if(isset($_GET['id_docente'])){ 
+    include('db/conopen2.php');
     $sql = "SELECT id_grupo from grupo where id_docente = '".$_GET['id_docente']."'";
     $resultado = mysqli_query($conexion,$sql) or die ( "Algo ha ido mal en la consulta a la   base de datos");
     while($grupo = mysqli_fetch_array($resultado)){
@@ -112,7 +113,7 @@ if(isset($_GET['id_docente'])){
  // $resultado = mysqli_query($conexion,$sqls) or die ( "Algo ha ido mal en la consulta a la   base de datos avisos id_docente");
  // $datos = mysqli_fetch_all($resultado,MYSQLI_ASSOC);
   echo $sqls;
-  echo "°°termina"
+  echo "°°termina";
   //echo json_encode($datos);   
   }
 ?>
