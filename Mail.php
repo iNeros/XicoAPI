@@ -108,7 +108,8 @@ if(isset($_GET['id_docente'])){
     $sql = "SELECT id_grupo from grupo where id_docente = '".$_GET['id_docente']."'";
     $resultado = mysqli_query($conexion,$sql) or die ( "Algo ha ido mal en la consulta a la   base de datos");
     while($grupo = mysqli_fetch_array($resultado)){
-    $sqls = $sqls+" SELECT avisos.id_avisos,avisos.fecha,avisos.nombre,avisos.id_grupo from avisos where id_grupo = '".$grupo['id_grupo']."' UNION ";
+    $sqls = " SELECT avisos.id_avisos,avisos.fecha,avisos.nombre,avisos.id_grupo from avisos where id_grupo = ".$grupo['id_grupo']." UNION ";
+    $sqls+$sqls;
   }
  // $resultado = mysqli_query($conexion,$sqls) or die ( "Algo ha ido mal en la consulta a la   base de datos avisos id_docente");
  // $datos = mysqli_fetch_all($resultado,MYSQLI_ASSOC);
