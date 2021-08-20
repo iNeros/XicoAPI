@@ -110,10 +110,12 @@ if(isset($_GET['id_docente'])){
     while($grupo = mysqli_fetch_array($resultado)){
     $sqls=  $sqls+$sqls1;
     $sqls1 = " SELECT avisos.id_avisos,avisos.fecha,avisos.nombre,avisos.id_grupo from avisos where id_grupo = ".$grupo['id_grupo']." UNION ";
-  }
+    echo $sqls;
+    echo "espacio";
+    echo $sqls1;    
+}
  // $resultado = mysqli_query($conexion,$sqls) or die ( "Algo ha ido mal en la consulta a la   base de datos avisos id_docente");
  // $datos = mysqli_fetch_all($resultado,MYSQLI_ASSOC);
-  echo $sqls;
   echo "°°termina";
   //echo json_encode($datos);   
   }
