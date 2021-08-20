@@ -30,9 +30,7 @@ function permisos() {
         echo json_encode($datos);
         exit();
         }if (isset($_GET['R'])) { 
-        $sql = "SELECT * FROM noticias_globales WHERE id_noticias = (SELECT MAX(id_noticias) FROM noticias_globales)
-        UNION
-        SELECT * FROM noticias_globales WHERE id_noticias = (SELECT MAX(id_noticias)-1 FROM noticias_globales);";
+        $sql = "SELECT * FROM noticias_globales ORDER by id_noticias DESC LIMIT 2";
         $resultado = mysqli_query($conexion,$sql) or die ( "Algo ha ido mal en la consulta a la   base de datos");
         $datos = mysqli_fetch_all($resultado,MYSQLI_ASSOC);
         header("HTTP/1.1 200 OK");
