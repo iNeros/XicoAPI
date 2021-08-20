@@ -111,8 +111,8 @@ if(isset($_GET['id_docente'])){
         $sqls1 = "SELECT avisos.id_avisos,avisos.fecha,avisos.nombre,avisos.id_grupo from avisos where id_grupo = ".$grupo['id_grupo']." UNION ".$sqls1."";  
         }
         echo $sqls1;
-        $sqls2 = "SELECT avisos.id_avisos,avisos.fecha,avisos.nombre,avisos.id_grupo from avisos where id_grupo = '20' UNION SELECT avisos.id_avisos,avisos.fecha,avisos.nombre,avisos.id_grupo from avisos where id_grupo = '2' UNION";
-        $resultado2 = mysqli_query($conexion,$sqls2) or die ( "Algo ha ido mal en la consulta a la   base de datos avisos id_doen");
+        $sqls2 = "SELECT avisos.id_avisos,avisos.fecha,avisos.nombre,avisos.id_grupo from avisos where id_grupo = '20' UNION SELECT avisos.id_avisos,avisos.fecha,avisos.nombre,avisos.id_grupo from avisos where id_grupo = '2'";
+        $resultado2 = mysqli_query($conexion,$sqls2) or die ( "Algo ha ido mal en la consulta a la   base de datos avisos id");
         echo $resultado2;
   
   //echo json_encode($datos);   
