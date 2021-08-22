@@ -74,11 +74,18 @@ function permisos() {
         exit();
   }     //update a tabla actividades usando el id_actividad
         if ($_SERVER['REQUEST_METHOD'] == 'PUT'){
-        $sql = "UPDATE actividades SET `nombre`='".$_GET[nombre]."',`descripcion`='".$_GET[descripcion]."',`fecha_inicio`='".$_GET[fecha_inicio]."',`fecha_fin`='".$_GET[fecha_fin]."', `estado`='".$_GET[estado]."',`id_grupo`='".$_GET[id_grupo]."' WHERE  `id_actividad`='".$_GET[id_actividad]."';";
+        if (isset($_GET['upestado'])) { 
+        $sql = "UPDATE actividades SET `estado`='".$_GET[upestado]."' WHERE  `id_actividad`='".$_GET[id_actividad]."';";
         $resultado = mysqli_query($conexion,$sql) or die ( "Algo ha ido mal en la consulta a la   base de datos put");
         $datos = mysqli_fetch_all($resultado,MYSQLI_ASSOC);
         header("HTTP/1.1 200 OK");
         exit();
+        }else{
+        $sql = "UPDATE actividades SET `nombre`='".$_GET[nombre]."',`descripcion`='".$_GET[descripcion]."',`fecha_inicio`='".$_GET[fecha_inicio]."',`fecha_fin`='".$_GET[fecha_fin]."', `estado`='".$_GET[estado]."',`id_grupo`='".$_GET[id_grupo]."' WHERE  `id_actividad`='".$_GET[id_actividad]."';";
+        $resultado = mysqli_query($conexion,$sql) or die ( "Algo ha ido mal en la consulta a la   base de datos put");
+        $datos = mysqli_fetch_all($resultado,MYSQLI_ASSOC);
+        header("HTTP/1.1 200 OK");
+        exit();}
 }       //delete actividad usando el id_actividad
         if ($_SERVER['REQUEST_METHOD'] == 'DELETE'){
         $sql = "DELETE FROM actividades WHERE  `id_actividad`='".$_GET[id_actividad]."';";
