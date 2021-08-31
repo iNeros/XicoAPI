@@ -3,7 +3,7 @@
 header('Content-Type: application/json');
 function permisos() {  
   if (isset($_SERVER['HTTP_ORIGIN'])){
-      header("Access-Control-Allow-Origin: https://federiquitos.com/Avisos");
+      header("Access-Control-Allow-Origin: *");
       header("Access-Control-Allow-Methods: GET, POST, PATCH, PUT, DELETE, OPTIONS");
       header("Access-Control-Allow-Headers: Origin, Authorization, X-Requested-With, Content-Type, Accept");
       header('Access-Control-Allow-Credentials: true');      
